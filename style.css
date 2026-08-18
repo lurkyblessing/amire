@@ -25,9 +25,8 @@ body {
     overflow-x: hidden;
 }
 
-.puntino-font {
-    /* Fallback if Adobe Fonts is not linked */
-    font-family: 'Puntino', 'Playfair Display', serif;
+.baskerville-font {
+    font-family: 'Baskerville', 'Bakersville', 'Libre Baskerville', 'Playfair Display', serif;
 }
 
 /* Header */
