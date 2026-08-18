@@ -304,3 +304,41 @@ footer p {
         border-radius: 12px;
     }
 }
+
+
+/* About Page Pink Theme Overrides */
+body.about-page {
+    background-color: var(--color-pink);
+    color: var(--color-brown);
+}
+
+body.about-page .nav-links a {
+    color: var(--color-brown);
+}
+
+body.about-page .nav-links a:hover, body.about-page .nav-links a.active {
+    color: var(--color-slate); /* A dark contrasting color */
+    opacity: 0.7;
+}
+
+body.about-page .about-title {
+    color: var(--color-brown);
+}
+
+body.about-page .about-text {
+    color: var(--color-brown);
+}
+
+body.about-page footer p, 
+body.about-page footer .social-links span {
+    color: var(--color-brown);
+}
+
+body.about-page footer svg path {
+    fill: var(--color-brown);
+}
+
+body.about-page .submark-img {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(72, 39, 30, 0.15);
+}
