@@ -86,9 +86,11 @@ body {
 }
 
 .logo-container {
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     display: flex;
     justify-content: center;
+    position: relative;
+    z-index: 1;
 }
 
 .center-logo {
@@ -109,8 +111,11 @@ body {
 .hero-subtitle {
     font-size: 3rem;
     font-weight: 400;
+    margin-top: -4rem; /* Pulls the subheading aggressively up over the logo's bottom padding */
     margin-bottom: 1.5rem;
     color: var(--color-sage);
+    position: relative;
+    z-index: 2; /* Ensures text stays visible above the logo's background */
 }
 
 .hero-text {
