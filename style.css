@@ -191,12 +191,18 @@ body {
     font-weight: 500;
 }
 
-.form-message.success {
+.form-message.success, .formkit-alert-success {
     color: var(--color-sage);
+    list-style: none;
+    font-weight: 500;
+    margin-top: 15px;
 }
 
-.form-message.error {
+.form-message.error, .formkit-alert-error {
     color: var(--color-pink);
+    list-style: none;
+    font-weight: 500;
+    margin-top: 15px;
 }
 
 /* About Page */
