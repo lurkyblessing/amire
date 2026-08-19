@@ -8,7 +8,123 @@
     <link rel="stylesheet" href="style.css?v=6">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .sarafina-hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .sarafina-title {
+            font-size: 4rem;
+            color: var(--color-sage);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .sarafina-subtitle {
+            font-size: 1.5rem;
+            color: var(--color-pink);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            color: var(--color-sage);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .product-reveal-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 1rem;
+        }
+        
+        .product-image-container {
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--color-sage), var(--color-pink));
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            /* Start with a heavy blur */
+            filter: blur(30px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-brown);
+            font-size: 2rem;
+            font-weight: 500;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: filter 0.1s;
+        }
+
+        .colorways {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .color-swatch {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+
+        .preorder-btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 1.2rem 4rem;
+            background: var(--color-sage);
+            color: var(--color-brown);
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .preorder-btn:hover {
+            background: var(--color-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(243, 197, 205, 0.3);
+        }
+    </style>
 </head>
 <body>
     <header class="main-header">
@@ -22,19 +138,29 @@
         </nav>
     </header>
 
-    <div class="container">
-        <main class="product-main" style="text-align: center; max-width: 800px; margin: 4rem auto; opacity: 0; animation: slowFadeIn 1.5s ease-in-out forwards;">
-            <h2 class="baskerville-font" style="font-size: 4rem; color: var(--color-sage); margin-bottom: 1rem;">sarafina shades</h2>
-            <p class="hero-text" style="color: var(--color-pink); margin-bottom: 3rem;">
-                the flagship product that started it all. functional, flawless, and curated for the cool girl energy you exude.
-            </p>
-            
-            <div class="product-placeholder" style="width: 100%; aspect-ratio: 16/9; background: rgba(133, 168, 164, 0.05); border: 1px dashed rgba(133, 168, 164, 0.5); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 3rem; overflow: hidden; position: relative;">
-                <span style="color: var(--color-sage); font-size: 1.2rem; font-weight: 300; letter-spacing: 2px; text-transform: uppercase;">Product reveal coming soon</span>
-            </div>
+    <div class="sarafina-hero">
+        <h2 class="sarafina-title">sarafina shades</h2>
+        <p class="sarafina-subtitle">
+            the flagship product that started it all. functional, flawless, and curated for the cool girl energy you exude.
+        </p>
+        <div class="scroll-indicator">scroll to reveal</div>
+    </div>
 
-            <a href="/" class="notify-btn" style="display: inline-block; text-decoration: none; padding: 1.2rem 3rem; background: var(--color-sage); color: var(--color-brown); font-weight: 600; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; border-radius: 50px; transition: opacity 0.3s ease;">Join the Waitlist</a>
-        </main>
+    <div class="product-reveal-section">
+        <div class="product-image-container" id="reveal-image">
+            <span>Sarafina Shades</span>
+        </div>
+        
+        <div class="colorways" id="colorways">
+            <!-- Brand palette colorways -->
+            <div class="color-swatch" style="background-color: var(--color-pink);" title="Rose Quartz"></div>
+            <div class="color-swatch" style="background-color: var(--color-sage);" title="Matcha"></div>
+            <div class="color-swatch" style="background-color: var(--color-slate);" title="Midnight"></div>
+            <div class="color-swatch" style="background-color: var(--color-red);" title="Cherry"></div>
+            <div class="color-swatch" style="background-color: var(--color-brown);" title="Espresso"></div>
+        </div>
+
+        <a href="#" class="preorder-btn" id="preorder-btn">Preorder Now</a>
     </div>
 
     <footer>
@@ -51,6 +177,44 @@
         <p style="color: var(--color-pink);">&copy; 2026 amiré. All rights reserved.</p>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealImage = document.getElementById('reveal-image');
+            const colorways = document.getElementById('colorways');
+            const preorderBtn = document.getElementById('preorder-btn');
+            
+            // Dynamic blur based on scroll
+            window.addEventListener('scroll', () => {
+                if (!revealImage) return;
+                
+                const rect = revealImage.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                // Calculate how much of the element is visible
+                // 0 = just entered bottom of screen, 1 = fully in middle of screen
+                let visibility = (windowHeight - rect.top) / (windowHeight / 1.5);
+                
+                // Clamp visibility between 0 and 1
+                visibility = Math.max(0, Math.min(1, visibility));
+                
+                // Max blur is 30px, min blur is 0px
+                const blurAmount = 30 * (1 - visibility);
+                revealImage.style.filter = `blur(${blurAmount}px)`;
+                
+                // Show colorways and button when fully unblurred
+                if (visibility > 0.8) {
+                    colorways.style.opacity = '1';
+                    colorways.style.transform = 'translateY(0)';
+                    
+                    preorderBtn.style.opacity = '1';
+                    preorderBtn.style.transform = 'translateY(0)';
+                }
+            });
+            
+            // Trigger scroll event once on load in case user refreshed while scrolled down
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
