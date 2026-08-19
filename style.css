@@ -329,13 +329,19 @@ body.about-page .about-text {
     color: var(--color-pink);
 }
 
+body.about-page footer {
+    background-color: var(--color-pink);
+    border-top: none;
+    margin-top: 4rem;
+}
+
 body.about-page footer p, 
 body.about-page footer .social-links span {
-    color: var(--color-pink);
+    color: var(--color-sage);
 }
 
 body.about-page footer svg path {
-    fill: var(--color-pink);
+    fill: var(--color-sage);
 }
 
 body.about-page .submark-img {
