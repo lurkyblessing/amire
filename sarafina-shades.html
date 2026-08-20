@@ -19,16 +19,16 @@
             font-size: 5rem;
             color: var(--color-sage);
             text-align: center;
-            margin-bottom: 30vh; /* Pushes the product down to force scrolling */
+            margin-bottom: 5rem; /* Reduced gap */
             font-weight: 400;
         }
 
         .product-layout {
             display: flex;
             gap: 4rem;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
             align-items: flex-start;
         }
 
@@ -38,7 +38,7 @@
         }
 
         .product-right {
-            flex: 1;
+            flex: 2;
             display: flex;
             flex-direction: column;
         }
@@ -59,6 +59,29 @@
             transition: filter 0.1s;
         }
 
+        .thumbnail-gallery {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .thumbnail {
+            flex: 1;
+            aspect-ratio: 4/3;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(133, 168, 164, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+        }
+
         .sarafina-description {
             font-size: 1.2rem;
             color: var(--color-pink);
@@ -72,7 +95,8 @@
 
         .shades-container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            flex-wrap: wrap;
             gap: 1.5rem;
             margin-bottom: 3rem;
             /* Fade in with JS */
@@ -175,6 +199,12 @@
                 <div class="product-image-container" id="reveal-image">
                     <span class="baskerville-font" style="opacity: 0.5;">Sarafina Shades</span>
                 </div>
+                <div class="thumbnail-gallery" id="thumbnail-gallery">
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
             </div>
             
             <div class="product-right">
@@ -235,6 +265,7 @@
             const description = document.getElementById('description');
             const colorways = document.getElementById('colorways');
             const preorderBtn = document.getElementById('preorder-btn');
+            const thumbnailGallery = document.getElementById('thumbnail-gallery');
             
             window.addEventListener('scroll', () => {
                 if (!revealImage) return;
@@ -243,15 +274,16 @@
                 const windowHeight = window.innerHeight;
                 
                 // Calculate how much of the element is visible
-                let visibility = (windowHeight - rect.top) / (windowHeight * 0.7);
-                visibility = Math.max(0, Math.min(1, visibility));
+                let visibility = (windowHeight - rect.top) / windowHeight;
+                // Clamp visibility so it fully unblurs sooner (by the time it's 70% down screen)
+                visibility = Math.max(0, Math.min(1, visibility / 0.7));
                 
                 // Max blur is 40px, min blur is 0px
                 const blurAmount = 40 * (1 - visibility);
                 revealImage.style.filter = `blur(${blurAmount}px)`;
                 
                 // Show right column content smoothly based on blur
-                if (visibility > 0.6) {
+                if (visibility > 0.8) {
                     description.style.opacity = '1';
                     description.style.transform = 'translateY(0)';
                     
@@ -260,6 +292,11 @@
                     
                     preorderBtn.style.opacity = '1';
                     preorderBtn.style.transform = 'translateY(0)';
+
+                    if(thumbnailGallery) {
+                        thumbnailGallery.style.opacity = '1';
+                        thumbnailGallery.style.transform = 'translateY(0)';
+                    }
                 }
             });
             
