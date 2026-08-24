@@ -216,30 +216,27 @@
                 <div class="shades-container" id="colorways">
                     <div class="shade-item">
                         <span class="shade-name">morádé (s)</span>
-                        <div class="color-swatch" style="background-color: var(--color-pink); border: 2px solid #C0C0C0;"></div>
-                        <span class="shade-desc baskerville-font">silver finish</span>
-                    </div>
+                        <div class="color-swatch" data-desc="for girls ready to wear their crown. this stunning silver color way is a perfect staple in your closet. so whatever your statement, your bling says “i’m here”" style="background-color: var(--color-pink); border: 2px solid #C0C0C0;"></div>
+                        </div>
                     <div class="shade-item">
                         <span class="shade-name">morádé (g)</span>
-                        <div class="color-swatch" style="background-color: var(--color-pink); border: 2px solid #D4AF37;"></div>
-                        <span class="shade-desc baskerville-font">gold finish</span>
-                    </div>
+                        <div class="color-swatch" data-desc="for girls ready to wear their crown. this stunning gold color way is a perfect staple in your closet. so whatever your statement, your bling says “i’m here”" style="background-color: var(--color-pink); border: 2px solid #D4AF37;"></div>
+                        </div>
                     <div class="shade-item">
                         <span class="shade-name">abiola</span>
-                        <div class="color-swatch" style="background-color: var(--color-red);"></div>
-                        <span class="shade-desc baskerville-font">bold & vibrant</span>
-                    </div>
+                        <div class="color-swatch" data-desc="a bold statement for the trendsetter who isn't afraid to stand out." style="background-color: var(--color-red);"></div>
+                        </div>
                     <div class="shade-item">
                         <span class="shade-name">damiana</span>
-                        <div class="color-swatch" style="background-color: var(--color-brown);"></div>
-                        <span class="shade-desc baskerville-font">rich & grounded</span>
-                    </div>
+                        <div class="color-swatch" data-desc="rich and grounded, an everyday essential that elevates any look." style="background-color: var(--color-brown);"></div>
+                        </div>
                     <div class="shade-item">
                         <span class="shade-name">abeke</span>
-                        <div class="color-swatch" style="background-color: var(--color-sage);"></div>
-                        <span class="shade-desc baskerville-font">cool & balanced</span>
-                    </div>
+                        <div class="color-swatch" data-desc="cool and balanced, the perfect finishing touch for a flawless vibe." style="background-color: var(--color-sage);"></div>
+                        </div>
                 </div>
+
+                <div id="dynamic-shade-desc" class="baskerville-font" style="display:none; color: var(--color-pink); font-size: 1.1rem; line-height: 1.5; margin-bottom: 2rem; opacity: 0; transition: opacity 0.3s ease;"></div>
 
                 <a href="#" class="preorder-btn" id="preorder-btn">Preorder</a>
             </div>
@@ -303,6 +300,36 @@
             
             // Trigger scroll once on load
             window.dispatchEvent(new Event('scroll'));
+
+            // Colorway selection logic
+            const swatches = document.querySelectorAll('.color-swatch');
+            const dynamicDesc = document.getElementById('dynamic-shade-desc');
+            
+            swatches.forEach(swatch => {
+                swatch.addEventListener('click', (e) => {
+                    // Remove selected state from all
+                    swatches.forEach(s => {
+                        s.style.boxShadow = 'none';
+                        s.style.transform = 'scale(1)';
+                    });
+                    
+                    // Add selected state to clicked
+                    e.target.style.boxShadow = '0 0 15px rgba(255,255,255,0.4)';
+                    e.target.style.transform = 'scale(1.15)';
+                    
+                    // Show description
+                    const desc = e.target.getAttribute('data-desc');
+                    if (desc) {
+                        dynamicDesc.style.display = 'block';
+                        // small delay to allow display block to render before fading in
+                        setTimeout(() => {
+                            dynamicDesc.style.opacity = '1';
+                            dynamicDesc.innerHTML = desc;
+                        }, 10);
+                    }
+                });
+            });
+
         });
     </script>
     <script src="script.js"></script>
