@@ -140,11 +140,12 @@ body {
    EMAIL CAPTURE (PROMINENT)
    -------------------- */
 .notify-form-container {
+    opacity: 1 !important;
+    display: block !important;
     margin-top: 3rem;
     width: 100%;
     max-width: 400px;
-    opacity: 0;
-    animation: fadeIn 1.5s ease-out 1.2s forwards;
+    /* Animation removed to ensure ConvertKit form is visible */
     position: relative;
     z-index: 10;
 }
