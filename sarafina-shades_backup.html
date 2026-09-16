@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>amiré - Sarafina Shades</title>
+    <meta name="description" content="Discover Sarafina Shades, the flagship product from amiré functional beauty.">
+    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <style>
+        .sarafina-page {
+            padding-top: 15vh;
+            padding-bottom: 5rem;
+        }
+
+        .sarafina-title {
+            font-size: 5rem;
+            color: var(--color-sage);
+            text-align: center;
+            margin-bottom: 5rem; /* Reduced gap */
+            font-weight: 400;
+        }
+
+        .product-layout {
+            display: flex;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            align-items: flex-start;
+        }
+
+        .product-left {
+            flex: 3;
+            position: relative;
+        }
+
+        .product-right {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-image-container {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--color-sage), var(--color-pink));
+            border-radius: 20px;
+            filter: blur(40px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-brown);
+            font-size: 2rem;
+            font-weight: 500;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: filter 0.1s;
+        }
+
+        .thumbnail-gallery {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .thumbnail {
+            flex: 1;
+            aspect-ratio: 4/3;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(133, 168, 164, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        .sarafina-description {
+            font-size: 1.2rem;
+            color: var(--color-sage);
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            /* Fade in with JS */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+
+        .shades-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            /* Fade in with JS */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out 0.2s;
+        }
+
+        .shade-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .shade-name {
+            font-size: 0.9rem;
+            color: var(--color-slate);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .color-swatch {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.1);
+            margin-bottom: 0.5rem;
+        }
+
+        .shade-desc {
+            font-size: 0.85rem;
+            color: var(--color-pink);
+            font-style: italic;
+        }
+
+        .preorder-btn {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            background: var(--color-sage);
+            color: var(--color-brown);
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+
+        .preorder-btn:hover {
+            background: var(--color-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(243, 197, 205, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .product-layout {
+                flex-direction: column;
+            }
+            .product-left, .product-right {
+                width: 100%;
+            }
+            .sarafina-title {
+                font-size: 3rem;
+                margin-bottom: 15vh;
+            }
+            .shades-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <a href="/" class="submark-link">
+            <img src="new-amire-logo.png" alt="amiré logo" class="submark-img" style="height: 80px; width: auto; display: block;">
+        </a>
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/sarafina-shades" class="active">Sarafina Shades</a>
+            <a href="/founder">Our Founder</a>
+        </nav>
+    </header>
+
+    <div class="sarafina-page">
+        <h2 class="sarafina-title" style="font-family: 'Pinyon Script', cursive; ">Sarafina Shades</h2>
+
+        <div class="product-layout">
+            <div class="product-left">
+                <div class="product-image-container" id="reveal-image">
+                    <span style="font-family: 'Pinyon Script', cursive; opacity: 0.5;">Sarafina Shades</span>
+                </div>
+                <div class="thumbnail-gallery" id="thumbnail-gallery">
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            
+            <div class="product-right">
+                <p class="sarafina-description" id="description">
+                    <i>ready for sun-thing special?</i><br><br>
+                    suns up, pouts out with our sarafina shades. sarafinas are the cool girls way of keeping her lip combo right where she needs it all day. so no matter what life throws your way, you can say with ease èmí reé!
+                </p>
+
+                <div class="shades-container" id="colorways">
+                    <div class="shade-item">
+                        <span class="shade-name">morádé (s)</span>
+                        <div class="color-swatch" data-desc="for girls ready to wear their crown. this stunning silver morádé is a perfect staple in your closet. so whatever your statement, your bling says “i’m here”" style="background-image: url('morade-silver-swatch.png'); background-size: cover; background-position: center; border: 2px solid #C0C0C0;"></div>
+                    </div>
+                    <div class="shade-item">
+                        <span class="shade-name">morádé (g)</span>
+                        <div class="color-swatch" data-desc="for girls ready to wear their crown. this stunning gold morádé is a perfect staple in your closet. so whatever your statement, your bling says “i’m here”" style="background-image: url('morade-gold-swatch.png'); background-size: cover; background-position: center; border: 2px solid #D4AF37;"></div>
+                    </div>
+                    <div class="shade-item">
+                        <span class="shade-name">Abíọlá</span>
+                        <div class="color-swatch" data-desc="a bold statement for the trendsetter who isn't afraid to stand out." style="background-image: url('abiola-swatch.jpg'); background-size: cover; background-position: center;"></div>
+                    </div>
+                    <div class="shade-item">
+                        <span class="shade-name">damiana</span>
+                        <div class="color-swatch" data-desc="luxury doesn't scream, it speaks. so damiana can be heard loud and clear. the striking bordeaux with the perfect amount of sparkle ensures that this isn't loud but tells your story" style="background-image: url('damiana-swatch.png'); background-size: cover; background-position: center;"></div>
+                    </div>
+                    <div class="shade-item">
+                        <span class="shade-name">Àbẹ̀kẹ́</span>
+                        <div class="color-swatch" data-desc="cool and balanced, the perfect finishing touch for a flawless vibe." style="background-color: var(--color-sage);"></div>
+                        </div>
+                </div>
+
+                <div id="dynamic-shade-desc" class="baskerville-font" style="display:none; color: var(--color-pink); font-size: 1.1rem; line-height: 1.5; margin-bottom: 2rem; opacity: 0; transition: opacity 0.3s ease;"></div>
+
+                <a href="#" class="preorder-btn" id="preorder-btn">Preorder</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com/amirecosmetics" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="var(--color-pink)"/></svg>
+                <span style="color: var(--color-pink);">@amirecosmetics</span>
+            </a>
+            <a href="https://tiktok.com/@amirebeauty" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <img src="tiktok-custom-logo.png" alt="TikTok" style="width: 24px; height: 24px;">
+                <span style="color: var(--color-pink);">@amirebeauty</span>
+            </a>
+        </div>
+        <p style="color: var(--color-pink);">&copy; 2026 amiré. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealImage = document.getElementById('reveal-image');
+            const description = document.getElementById('description');
+            const colorways = document.getElementById('colorways');
+            const preorderBtn = document.getElementById('preorder-btn');
+            const thumbnailGallery = document.getElementById('thumbnail-gallery');
+            
+            window.addEventListener('scroll', () => {
+                if (!revealImage) return;
+                
+                const rect = revealImage.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                // Calculate how much of the element is visible
+                let visibility = (windowHeight - rect.top) / windowHeight;
+                // Clamp visibility so it fully unblurs sooner (by the time it's 70% down screen)
+                visibility = Math.max(0, Math.min(1, visibility / 0.7));
+                
+                // Max blur is 40px, min blur is 0px
+                const blurAmount = 40 * (1 - visibility);
+                revealImage.style.filter = `blur(${blurAmount}px)`;
+                
+                // Show right column content smoothly based on blur
+                if (visibility > 0.8) {
+                    description.style.opacity = '1';
+                    description.style.transform = 'translateY(0)';
+                    
+                    colorways.style.opacity = '1';
+                    colorways.style.transform = 'translateY(0)';
+                    
+                    preorderBtn.style.opacity = '1';
+                    preorderBtn.style.transform = 'translateY(0)';
+
+                    if(thumbnailGallery) {
+                        thumbnailGallery.style.opacity = '1';
+                        thumbnailGallery.style.transform = 'translateY(0)';
+                    }
+                }
+            });
+            
+            // Trigger scroll once on load
+            window.dispatchEvent(new Event('scroll'));
+
+            // Colorway selection logic
+            const swatches = document.querySelectorAll('.color-swatch');
+            const dynamicDesc = document.getElementById('dynamic-shade-desc');
+            
+            swatches.forEach(swatch => {
+                swatch.addEventListener('click', (e) => {
+                    // Remove selected state from all
+                    swatches.forEach(s => {
+                        s.style.boxShadow = 'none';
+                        s.style.transform = 'scale(1)';
+                    });
+                    
+                    // Add selected state to clicked
+                    e.target.style.boxShadow = '0 0 15px rgba(255,255,255,0.4)';
+                    e.target.style.transform = 'scale(1.15)';
+                    
+                    // Show description
+                    const desc = e.target.getAttribute('data-desc');
+                    if (desc) {
+                        dynamicDesc.style.display = 'block';
+                        // small delay to allow display block to render before fading in
+                        setTimeout(() => {
+                            dynamicDesc.style.opacity = '1';
+                            dynamicDesc.innerHTML = desc;
+                        }, 10);
+                    }
+                });
+            });
+
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,4 +1,6 @@
+import re
 
+css = """
 :root {
     --color-pink: #faedf1; /* rare pop accent */
     --color-brown: #281915; /* brand secondary */
@@ -434,3 +436,7 @@ footer {
         height: 30px;
     }
 }
+"""
+
+with open('style.css', 'w') as f:
+    f.write(css)

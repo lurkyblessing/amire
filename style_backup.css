@@ -1,0 +1,308 @@
+:root {
+    --color-pink: #faedf1; /* rare pop accent */
+    --color-brown: #281915; /* brand secondary */
+    --color-sage: #a0bddb; /* brand primary */
+    --color-slate: #22324a; /* brand secondary variant */
+    --color-cream: #fffaf0; /* accent deep */
+    
+    --bg-main: var(--color-brown);
+    --text-main: var(--color-pink);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.baskerville-font {
+    font-family: 'Baskerville', 'Bakersville', 'Libre Baskerville', 'Playfair Display', serif;
+}
+
+/* Header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+}
+
+.submark-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.submark-img {
+    height: 80px; 
+    width: auto;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--color-sage);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--color-pink);
+}
+
+/* Main Container */
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 5% 4rem;
+    text-align: center;
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo-container {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.center-logo {
+    max-width: 450px;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    animation: slowFadeIn 2.5s ease-in-out forwards;
+    /* Optional slight delay so it starts after container fades in */
+    animation-delay: 0.2s;
+}
+
+@keyframes slowFadeIn {
+    0% { opacity: 0; filter: blur(4px); transform: scale(0.95); }
+    100% { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+
+.hero-subtitle {
+    font-size: 3rem;
+    font-weight: 400;
+    margin-top: -4rem; /* Pulls the subheading aggressively up over the logo's bottom padding */
+    margin-bottom: 1.5rem;
+    color: var(--color-sage);
+    position: relative;
+    z-index: 2; /* Ensures text stays visible above the logo's background */
+}
+
+.hero-text {
+    font-size: 1.15rem;
+    color: var(--color-pink);
+    font-weight: 300;
+    margin-bottom: 3.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* Form */
+.notify-form {
+    display: flex;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+}
+
+#email-input {
+    flex-grow: 1;
+    padding: 1.2rem 1.5rem;
+    border-radius: 50px;
+    border: 1px solid var(--color-sage);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-pink);
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#email-input:focus {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#email-input::placeholder {
+    color: rgba(243, 197, 205, 0.6);
+}
+
+.notify-btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+    padding: 0 2rem;
+    border-radius: 50px;
+    border: none;
+    background: var(--color-sage);
+    color: var(--color-brown);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.notify-btn:hover {
+    background: var(--color-pink);
+}
+
+.form-message {
+    min-height: 24px;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.form-message.success, .formkit-alert-success {
+    color: var(--color-sage);
+    list-style: none;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.form-message.error, .formkit-alert-error {
+    color: var(--color-pink);
+    list-style: none;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+/* About Page */
+.about-main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-title {
+    font-size: 3.5rem;
+    color: var(--color-sage);
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.about-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--color-pink);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.about-text:last-of-type {
+    font-style: italic;
+    color: var(--color-sage);
+    font-size: 1.6rem;
+    margin-top: 2rem;
+}
+
+/* Footer */
+footer {
+    padding: 3rem 5%;
+    background-color: var(--color-slate);
+    color: var(--color-pink);
+    text-align: center;
+    margin-top: auto;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.social-links a {
+    color: var(--color-pink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.social-links a:hover {
+    color: var(--color-sage);
+}
+
+.social-links svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+footer p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .center-logo {
+        max-width: 250px;
+    }
+    .hero-subtitle {
+        font-size: 2rem;
+    }
+    .notify-form {
+        flex-direction: column;
+        border-radius: 12px;
+        box-shadow: none;
+    }
+    .notify-btn {
+        position: relative;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        margin-top: 10px;
+        padding: 1.2rem;
+        border-radius: 12px;
+    }
+    #email-input {
+        border-radius: 12px;
+    }
+}
+
+
