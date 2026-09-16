@@ -1,4 +1,40 @@
 
+
+/* --------------------
+   ANNOUNCEMENT BAR
+   -------------------- */
+.announcement-bar {
+    background-color: var(--color-sage);
+    color: var(--color-brown);
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1100;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+}
+
+.marquee {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee span {
+    padding-right: 15px; /* Adjust spacing to look seamless with the dot */
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Scrolls exactly half its width (one of the identical spans) */
+}
+    100% { transform: translate(-100%, 0); }
+}
+
+
 :root {
     --color-pink: #faedf1; /* rare pop accent */
     --color-brown: #281915; /* brand secondary */
