@@ -99,12 +99,13 @@ body {
 .hero-section {
     position: relative;
     width: 100vw;
-    height: calc(100vh - var(--header-height));
+    min-height: calc(100vh - var(--header-height));
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow-x: hidden;
+    padding-bottom: 5rem;
     text-align: center;
     padding: 0 5%;
 }
@@ -112,6 +113,8 @@ body {
 .center-logo {
     max-width: clamp(280px, 45vw, 650px);
     height: auto;
+    max-height: 45vh;
+    object-fit: contain;
     opacity: 0;
     animation: slowFadeIn 2s ease-out forwards;
 }
