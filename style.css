@@ -104,7 +104,7 @@ body {
 }
 
 .center-logo {
-    max-width: 60vw;
+    max-width: clamp(280px, 45vw, 650px);
     height: auto;
     opacity: 0;
     animation: slowFadeIn 2s ease-out forwards;
