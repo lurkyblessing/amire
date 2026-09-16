@@ -161,7 +161,7 @@ body {
 .notify-form div {
     display: flex;
     flex-direction: row;
-    background-color: var(--color-slate);
+    background-color: var(--color-brown);
     border: 1px solid var(--color-sage);
     border-radius: 50px;
     overflow: hidden;
@@ -219,7 +219,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 4rem;
-    background-color: var(--color-slate);
+    background-color: var(--color-brown);
 }
 
 .sarafina-image-container {
@@ -370,7 +370,7 @@ body {
    -------------------- */
 footer {
     padding: 4rem 5% 2rem;
-    background-color: var(--color-slate);
+    background-color: var(--color-brown);
     color: var(--color-pink);
     margin-top: auto;
     border-top: 1px solid rgba(250, 237, 241, 0.05);
