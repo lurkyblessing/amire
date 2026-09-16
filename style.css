@@ -149,7 +149,7 @@ body {
     z-index: 10;
 }
 
-.notify-form {
+.notify-form, .formkit-form {
     display: flex;
     width: 100%;
     position: relative;
