@@ -126,8 +126,7 @@ body {
     font-weight: 300;
     color: var(--color-sage);
     margin-top: -2vh;
-    opacity: 0;
-    animation: fadeIn 1.5s ease-out 0.8s forwards;
+    /* animations removed */
 }
 
 @keyframes fadeIn {
