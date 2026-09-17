@@ -6,7 +6,7 @@
     <title>amiré — CEW 2026 VIP Prototype Access</title>
     <meta name="description" content="VIP Prototype Access for CEW 2026: Sarafina Shades by amiré functional beauty.">
     <meta name="robots" content="noindex, nofollow">
-    <link rel="stylesheet" href="style.css?v=1009">
+    <link rel="stylesheet" href="style.css?v=1010">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -201,27 +201,36 @@
     </footer>
 
     <script>
-        // Smart Sticky Header
+        // Smart Sticky Header with dynamic mobile offset
         let lastScrollTop = 0;
         const header = document.querySelector('.main-header');
-        
-        window.addEventListener('scroll', () => {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
-                header.style.transform = `translateY(-100%)`;
-            } else {
-                header.style.transform = 'translateY(0)';
-            }
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        });
+        const threshold = 6;
 
-        // Form submission UX
-        const form = document.getElementById('deck-form');
-        const status = document.getElementById('deck-status');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                status.style.display = 'block';
+        function setHeaderOffset(offset) {
+            document.documentElement.style.setProperty('--header-offset', offset + 'px');
+        }
+
+        if (header) {
+            setHeaderOffset(header.offsetHeight);
+            window.addEventListener('resize', () => {
+                if (header.style.transform !== 'translateY(-100%)') {
+                    setHeaderOffset(header.offsetHeight);
+                }
             });
+
+            window.addEventListener('scroll', () => {
+                let scrollTop = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
+                if (Math.abs(scrollTop - lastScrollTop) <= threshold) return;
+
+                if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+                    header.style.transform = 'translateY(-100%)';
+                    setHeaderOffset(0);
+                } else {
+                    header.style.transform = 'translateY(0)';
+                    setHeaderOffset(header.offsetHeight);
+                }
+                lastScrollTop = scrollTop;
+            }, { passive: true });
         }
     </script>
 </body>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>amiré - Sarafina Shades</title>
     <meta name="description" content="Discover Sarafina Shades, the flagship product from amiré functional beauty.">
-    <link rel="stylesheet" href="style.css?v=1009">
+    <link rel="stylesheet" href="style.css?v=1010">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
@@ -25,11 +25,16 @@
         <div class="sarafina-left">
             <div class="sarafina-image-container" id="reveal-image">
                 <span class="sarafina-image-placeholder">Sarafina Shades</span>
+                <div class="sarafina-active-tag" id="active-tag"></div>
             </div>
         </div>
         
         <div class="sarafina-right">
             <h2 class="sarafina-header">Sarafina Shades</h2>
+            <div class="sarafina-mobile-hint">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12l4 4 4-4"></path></svg>
+                tap swatches to preview on stage
+            </div>
             <p class="sarafina-copy" id="description">
                 <i>ready for sun-thing special?</i><br><br>
                 suns up, pouts out with our sarafina shades. sarafinas are the cool girls way of keeping her lip combo right where she needs it all day. so no matter what life throws your way, you can say with ease èmí reé!
@@ -85,6 +90,12 @@
         const items = document.querySelectorAll('.shade-item');
         const defaultDesc = document.getElementById('description');
         const dynamicDesc = document.getElementById('dynamic-desc');
+        const revealImage = document.getElementById('reveal-image');
+        const activeTag = document.getElementById('active-tag');
+        const placeholder = revealImage ? revealImage.querySelector('.sarafina-image-placeholder') : null;
+
+        // Instant touch responsiveness
+        document.addEventListener('touchstart', function() {}, { passive: true });
 
         items.forEach(item => {
             item.addEventListener('click', () => {
@@ -94,45 +105,84 @@
                 // Add active to clicked
                 item.classList.add('active');
                 
-                // Get description
+                // Get swatch attributes
                 const swatch = item.querySelector('.color-swatch');
                 const text = swatch.getAttribute('data-desc');
+                const bgImg = swatch.style.backgroundImage;
+                const bgColor = swatch.style.backgroundColor;
+                const shadeName = item.querySelector('.shade-name').textContent;
                 
-                // Fade out, change text, fade in
+                // Interactive stage update
+                if (revealImage) {
+                    if (bgImg && bgImg !== 'none') {
+                        revealImage.style.backgroundImage = bgImg;
+                        revealImage.style.backgroundColor = 'transparent';
+                    } else if (bgColor) {
+                        revealImage.style.backgroundImage = 'none';
+                        revealImage.style.backgroundColor = bgColor;
+                    }
+                    if (placeholder) {
+                        placeholder.style.opacity = '0.18';
+                        placeholder.style.transform = 'scale(0.95)';
+                    }
+                }
+                
+                if (activeTag) {
+                    activeTag.textContent = shadeName;
+                    activeTag.classList.add('visible');
+                }
+                
+                // Fade out, change text, fade in description
                 dynamicDesc.classList.remove('visible');
                 
                 setTimeout(() => {
                     dynamicDesc.innerHTML = text;
                     dynamicDesc.classList.add('visible');
                     
-                    // Smoothly fade out default text
-                    if (defaultDesc.style.display !== 'none') {
+                    if (defaultDesc && defaultDesc.style.display !== 'none') {
                         defaultDesc.style.opacity = '0';
                         setTimeout(() => {
                             defaultDesc.style.display = 'none';
                         }, 400);
                     }
-                }, 400);
+                }, 200);
             });
         });
-    </script>
 
-    <script>
-        // Smart Sticky Header
+        // Smart Sticky Header with dynamic mobile offset
         let lastScrollTop = 0;
         const header = document.querySelector('.main-header');
-        
-        window.addEventListener('scroll', () => {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
-                // Scrolling down
-                header.style.transform = `translateY(-100%)`;
-            } else {
-                // Scrolling up
-                header.style.transform = 'translateY(0)';
-            }
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-        });
+        const threshold = 6;
+
+        function setHeaderOffset(offset) {
+            document.documentElement.style.setProperty('--header-offset', offset + 'px');
+        }
+
+        if (header) {
+            setHeaderOffset(header.offsetHeight);
+            window.addEventListener('resize', () => {
+                if (header.style.transform !== 'translateY(-100%)') {
+                    setHeaderOffset(header.offsetHeight);
+                }
+            });
+
+            window.addEventListener('scroll', () => {
+                let scrollTop = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
+                
+                if (Math.abs(scrollTop - lastScrollTop) <= threshold) return;
+
+                if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+                    // Scrolling DOWN
+                    header.style.transform = 'translateY(-100%)';
+                    setHeaderOffset(0);
+                } else {
+                    // Scrolling UP
+                    header.style.transform = 'translateY(0)';
+                    setHeaderOffset(header.offsetHeight);
+                }
+                lastScrollTop = scrollTop;
+            }, { passive: true });
+        }
     </script>
 </body>
 </html>

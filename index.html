@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>amiré functional beauty</title>
     <meta name="description" content="functional beauty for the effortless cool girl.">
-    <link rel="stylesheet" href="style.css?v=1009">
+    <link rel="stylesheet" href="style.css?v=1010">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
@@ -63,21 +63,37 @@
     
 
     <script>
-        // Smart Sticky Header
+        // Smart Sticky Header with dynamic mobile offset
         let lastScrollTop = 0;
         const header = document.querySelector('.main-header');
-        
-        window.addEventListener('scroll', () => {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
-                // Scrolling down
-                header.style.transform = `translateY(-100%)`;
-            } else {
-                // Scrolling up
-                header.style.transform = 'translateY(0)';
-            }
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-        });
+        const threshold = 6;
+
+        function setHeaderOffset(offset) {
+            document.documentElement.style.setProperty('--header-offset', offset + 'px');
+        }
+
+        if (header) {
+            setHeaderOffset(header.offsetHeight);
+            window.addEventListener('resize', () => {
+                if (header.style.transform !== 'translateY(-100%)') {
+                    setHeaderOffset(header.offsetHeight);
+                }
+            });
+
+            window.addEventListener('scroll', () => {
+                let scrollTop = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
+                if (Math.abs(scrollTop - lastScrollTop) <= threshold) return;
+
+                if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+                    header.style.transform = 'translateY(-100%)';
+                    setHeaderOffset(0);
+                } else {
+                    header.style.transform = 'translateY(0)';
+                    setHeaderOffset(header.offsetHeight);
+                }
+                lastScrollTop = scrollTop;
+            }, { passive: true });
+        }
     </script>
 </body>
 </html>
