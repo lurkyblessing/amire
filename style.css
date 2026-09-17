@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'Groovezilla';
+    src: url('fonts/DKS GroovezillaPersonalUse-Reg.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Groovezilla';
+    src: url('fonts/DKS GroovezillaPersonalUse-Exp.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --color-pink: #faedf1;
     --color-brown: #281915;
@@ -32,8 +48,13 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.baskerville-font {
-    font-family: 'Baskerville', 'Libre Baskerville', 'Playfair Display', serif;
+h1, h2, h3,
+.baskerville-font,
+.hero-subtitle,
+.sarafina-header,
+.founder-quote {
+    font-family: 'Groovezilla', 'Baskerville', serif;
+    letter-spacing: 0.02em;
 }
 
 /* --------------------
