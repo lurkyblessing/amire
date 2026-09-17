@@ -6,7 +6,7 @@
     <title>amiré — CEW 2026 VIP Prototype Access</title>
     <meta name="description" content="VIP Prototype Access for CEW 2026: Sarafina Shades by amiré functional beauty.">
     <meta name="robots" content="noindex, nofollow">
-    <link rel="stylesheet" href="style.css?v=1011">
+    <link rel="stylesheet" href="style.css?v=1012">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -85,20 +85,51 @@
                         We didn't slap a logo on off-the-shelf packaging. Sarafina Shades are engineered from the ground up to solve the physical realities of carrying cosmetics inside eyewear, with a strict focus on reducing plastic waste.
                     </p>
 
-                    <!-- Media Placeholder 2: Exploded Drawing -->
-                    <div class="cew-patent-frame">
-                        <span class="cew-media-tag" style="margin-bottom: 1rem;">Patent Filing Ref // Exploded Key</span>
-                        <div class="cew-media-icon" style="margin-bottom: 1rem;">
-                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="3" y1="9" x2="21" y2="9"></line>
-                                <line x1="9" y1="21" x2="9" y2="9"></line>
-                            </svg>
+                    <!-- Patent Architecture Technical Drawings Gallery -->
+                    <div class="cew-patent-gallery">
+                        <div class="cew-patent-tabs">
+                            <button type="button" class="cew-patent-tab-btn active" data-target="fig-01">Fig. 01: Exploded Cartridge Assembly</button>
+                            <button type="button" class="cew-patent-tab-btn" data-target="fig-02">Fig. 02: Cross-Section &amp; Sealing Rings</button>
+                            <button type="button" class="cew-patent-tab-btn" data-target="all">View Both</button>
                         </div>
-                        <h3 class="cew-media-title baskerville-font">[ media placeholder ]</h3>
-                        <p class="cew-media-desc">
-                            insert the exploded line drawing or annotated reference key from your patent filing here. Ensure the cartridge system is clearly labeled.
-                        </p>
+
+                        <!-- FIGURE 1: EXPLODED VIEW -->
+                        <div class="cew-patent-display-card" id="fig-01-card">
+                            <div class="cew-patent-card-header">
+                                <span class="cew-patent-header-title">
+                                    <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--color-sage); display: inline-block;"></span>
+                                    Patent Specification // Fig. 01: Exploded Assembly &amp; Cartridge Key
+                                </span>
+                                <a href="patent-drawing-exploded.png" target="_blank" rel="noopener noreferrer" class="cew-patent-zoom-link" title="Open full-resolution image">
+                                    Full Size &nearr;
+                                </a>
+                            </div>
+                            <div class="cew-patent-img-wrap">
+                                <img src="patent-drawing-exploded.png" alt="Sarafina Shades Exploded Assembly Patent Drawing" class="cew-patent-img" loading="lazy">
+                            </div>
+                            <div class="cew-patent-caption">
+                                <strong>FIG. 1 Exploded Specification:</strong> Highlights the front frame (1), complete temple assembly (2), protective O-ring (3), replaceable cartridge core (4), built-in pushing mechanism (6), cartridge end-pusher (7), proximal &amp; distal temple housing (8, 9), interchangeable lip product tip (10), and friction-fit ribs (11).
+                            </div>
+                        </div>
+
+                        <!-- FIGURE 2: TOP-DOWN CROSS-SECTION -->
+                        <div class="cew-patent-display-card" id="fig-02-card" style="display: none; margin-top: 1.5rem;">
+                            <div class="cew-patent-card-header">
+                                <span class="cew-patent-header-title">
+                                    <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--color-sage); display: inline-block;"></span>
+                                    Patent Specification // Fig. 02: Internal Cross-Section &amp; Thermal Seals
+                                </span>
+                                <a href="patent-drawing-crosssection.png" target="_blank" rel="noopener noreferrer" class="cew-patent-zoom-link" title="Open full-resolution image">
+                                    Full Size &nearr;
+                                </a>
+                            </div>
+                            <div class="cew-patent-img-wrap">
+                                <img src="patent-drawing-crosssection.png" alt="Sarafina Shades Cross Section &amp; Sealing Rings Patent Drawing" class="cew-patent-img" loading="lazy">
+                            </div>
+                            <div class="cew-patent-caption">
+                                <strong>FIG. 2 Internal Mechanics:</strong> Illustrates the top-down frame geometry, thumbwheel protective cover (1), precision thumbwheel dispenser (2), internal protective cover (3), thermal insulation chamber (4), and airtight sealing rings (5).
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Technical Pillars -->
@@ -235,6 +266,29 @@
                 lastScrollTop = scrollTop;
             }, { passive: true });
         }
+
+        // Patent gallery tab switcher
+        const patentBtns = document.querySelectorAll('.cew-patent-tab-btn');
+        const fig1 = document.getElementById('fig-01-card');
+        const fig2 = document.getElementById('fig-02-card');
+
+        patentBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                patentBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const target = btn.getAttribute('data-target');
+                if (target === 'fig-01') {
+                    if (fig1) fig1.style.display = 'block';
+                    if (fig2) fig2.style.display = 'none';
+                } else if (target === 'fig-02') {
+                    if (fig1) fig1.style.display = 'none';
+                    if (fig2) fig2.style.display = 'block';
+                } else {
+                    if (fig1) fig1.style.display = 'block';
+                    if (fig2) fig2.style.display = 'block';
+                }
+            });
+        });
     </script>
 </body>
 </html>

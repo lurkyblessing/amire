@@ -761,6 +761,119 @@ footer {
 }
 
 /* BLOCK 3: ARCHITECTURE & TECHNICAL PILLARS */
+.cew-patent-gallery {
+    margin: 3.5rem 0;
+    width: 100%;
+}
+
+.cew-patent-tabs {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cew-patent-tab-btn {
+    background: rgba(34, 50, 74, 0.4);
+    border: 1px solid rgba(160, 189, 219, 0.25);
+    color: var(--color-pink);
+    padding: 0.65rem 1.4rem;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.cew-patent-tab-btn:hover {
+    border-color: var(--color-sage);
+    color: var(--color-sage);
+}
+
+.cew-patent-tab-btn.active {
+    background: var(--color-sage);
+    color: var(--color-brown);
+    border-color: var(--color-sage);
+    font-weight: 500;
+}
+
+.cew-patent-display-card {
+    background: #ffffff;
+    border-radius: 22px;
+    border: 1px solid rgba(160, 189, 219, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    position: relative;
+    transition: opacity 0.35s ease;
+}
+
+.cew-patent-card-header {
+    background: #22324a;
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(160, 189, 219, 0.2);
+}
+
+.cew-patent-header-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-sage);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cew-patent-zoom-link {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-pink);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.cew-patent-zoom-link:hover {
+    opacity: 1;
+    color: var(--color-sage);
+}
+
+.cew-patent-img-wrap {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    min-height: 380px;
+}
+
+.cew-patent-img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.cew-patent-caption {
+    background: #fcfbfa;
+    border-top: 1px solid rgba(34, 50, 74, 0.08);
+    padding: 1.1rem 1.6rem;
+    font-size: 0.88rem;
+    color: #281915;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
 .cew-patent-frame {
     margin: 3.5rem 0;
     background: rgba(34, 50, 74, 0.3);
