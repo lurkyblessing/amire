@@ -1,4 +1,12 @@
 @font-face {
+    font-family: 'Nightshade';
+    src: url('fonts/NightshadeDEMO-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'Groovezilla';
     src: url('fonts/DKS GroovezillaPersonalUse-Cn.ttf') format('truetype');
     font-weight: 400;
@@ -51,11 +59,17 @@ body {
 h1, h2, h3,
 .baskerville-font,
 .hero-subtitle,
-.sarafina-header,
 .founder-quote {
     font-family: 'Baskerville', 'Libre Baskerville', 'Playfair Display', serif;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+}
+
+.sarafina-header,
+.sarafina-image-placeholder {
+    font-family: 'Nightshade', 'Baskerville', serif !important;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
 }
 
 /* --------------------
