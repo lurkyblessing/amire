@@ -721,6 +721,151 @@ footer {
     font-weight: 300;
 }
 
+/* Interactive 3D Model Viewer Card */
+.cew-3d-card {
+    min-height: unset;
+    padding: 2.2rem 2rem 1.8rem;
+    align-items: stretch;
+    margin-top: 2.5rem;
+    background: rgba(30, 20, 18, 0.7);
+    border: 1px solid rgba(160, 189, 219, 0.22);
+}
+
+.cew-3d-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.cew-3d-header .cew-media-tag {
+    margin-bottom: 0;
+}
+
+.cew-3d-status {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-pink);
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.cew-model-wrapper {
+    width: 100%;
+    height: 480px;
+    border-radius: 18px;
+    background: radial-gradient(circle at 50% 50%, rgba(160, 189, 219, 0.09) 0%, rgba(20, 12, 10, 0.85) 85%);
+    border: 1px solid rgba(160, 189, 219, 0.15);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+model-viewer.cew-model-viewer {
+    width: 100%;
+    height: 100%;
+    --poster-color: transparent;
+    outline: none;
+}
+
+.cew-model-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--color-sage);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+}
+
+.cew-loader-spinner {
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgba(160, 189, 219, 0.2);
+    border-top-color: var(--color-sage);
+    border-radius: 50%;
+    animation: cewSpin 0.9s linear infinite;
+}
+
+@keyframes cewSpin {
+    to { transform: rotate(360deg); }
+}
+
+.cew-3d-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(160, 189, 219, 0.12);
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.cew-3d-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: var(--color-pink);
+    opacity: 0.8;
+    letter-spacing: 0.03em;
+}
+
+.cew-3d-hint-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-sage);
+    display: inline-block;
+}
+
+.cew-3d-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.cew-3d-btn {
+    background: rgba(160, 189, 219, 0.1);
+    border: 1px solid rgba(160, 189, 219, 0.28);
+    color: var(--color-cream);
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.cew-3d-btn:hover {
+    background: rgba(160, 189, 219, 0.2);
+    border-color: var(--color-sage);
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .cew-model-wrapper {
+        height: 360px;
+    }
+    .cew-3d-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 /* EDITORIAL SECTIONS (RHODE STYLE) */
 .cew-section {
     padding: 7rem 8%;
