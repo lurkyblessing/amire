@@ -68,7 +68,7 @@ h1, h2, h3,
 .sarafina-header,
 .sarafina-image-placeholder {
     font-family: 'Nightshade', 'Baskerville', serif !important;
-    text-transform: lowercase;
+    text-transform: none;
     letter-spacing: 0.02em;
 }
 
