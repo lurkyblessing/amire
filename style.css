@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Groovezilla';
-    src: url('fonts/DKS GroovezillaPersonalUse-Reg.ttf') format('truetype');
+    src: url('fonts/DKS GroovezillaPersonalUse-Cn.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
     font-family: 'Groovezilla';
-    src: url('fonts/DKS GroovezillaPersonalUse-Exp.ttf') format('truetype');
+    src: url('fonts/DKS GroovezillaPersonalUse-Cn.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -54,7 +54,8 @@ h1, h2, h3,
 .sarafina-header,
 .founder-quote {
     font-family: 'Groovezilla', 'Baskerville', serif;
-    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* --------------------
@@ -134,7 +135,7 @@ h1, h2, h3,
 
 .hero-subtitle {
     font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 300;
+    font-weight: normal;
     color: var(--color-sage);
     margin-bottom: 3rem;
 }
