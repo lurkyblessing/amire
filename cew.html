@@ -6,7 +6,7 @@
     <title>amiré — CEW 2026 VIP Prototype Access</title>
     <meta name="description" content="VIP Prototype Access for CEW 2026: Sarafina Shades by amiré functional beauty.">
     <meta name="robots" content="noindex, nofollow">
-    <link rel="stylesheet" href="style.css?v=1014">
+    <link rel="stylesheet" href="style.css?v=1015">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -41,21 +41,12 @@
 
             <!-- 3D Interactive WebGL Render Viewport -->
             <div class="cew-media-card cew-3d-card">
-                <div class="cew-3d-header">
-                    <div class="cew-media-tag">
-                        Utility Patent Prototype // Interactive 3D Assembly
-                    </div>
-                    <div class="cew-3d-status">
-                        <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--color-sage);"></span>
-                        Live WebGL Model
-                    </div>
-                </div>
-
                 <div class="cew-model-wrapper">
                     <model-viewer
                         id="cew-3d-viewer"
                         src="cartridge-model.glb"
                         alt="amiré Sarafina Shades Cartridge 3D Model"
+                        animation-name="cartridge|cartridge|cartridgeAction"
                         auto-rotate
                         rotation-per-second="16deg"
                         camera-controls
@@ -79,6 +70,10 @@
                         Drag to rotate 360&deg; &bull; Pinch or scroll to inspect internal cavity &amp; cartridge
                     </div>
                     <div class="cew-3d-controls">
+                        <button type="button" class="cew-3d-btn cew-3d-play-btn" id="play-anim-btn">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            <span>Play Animation</span>
+                        </button>
                         <button type="button" class="cew-3d-btn" id="toggle-rotate-btn">
                             Pause Auto-Spin
                         </button>
@@ -326,10 +321,69 @@
             });
         });
 
-        // 3D Model Viewer Controls
+        // 3D Model Viewer Controls & Animation
         const modelViewer = document.getElementById('cew-3d-viewer');
+        const playAnimBtn = document.getElementById('play-anim-btn');
         const toggleRotateBtn = document.getElementById('toggle-rotate-btn');
         const resetCamBtn = document.getElementById('reset-cam-btn');
+
+        if (modelViewer && playAnimBtn) {
+            let isPlaying = false;
+
+            const setPlayState = () => {
+                isPlaying = true;
+                playAnimBtn.innerHTML = `
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                    <span>Pause Animation</span>
+                `;
+            };
+
+            const setPauseState = () => {
+                isPlaying = false;
+                playAnimBtn.innerHTML = `
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <span>Resume Animation</span>
+                `;
+            };
+
+            const setReplayState = () => {
+                isPlaying = false;
+                playAnimBtn.innerHTML = `
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                    <span>Replay Animation</span>
+                `;
+            };
+
+            modelViewer.addEventListener('load', () => {
+                modelViewer.pause();
+                modelViewer.currentTime = 0;
+            });
+
+            playAnimBtn.addEventListener('click', () => {
+                if (isPlaying) {
+                    modelViewer.pause();
+                    setPauseState();
+                } else {
+                    if (modelViewer.currentTime >= (modelViewer.duration - 0.05) || modelViewer.currentTime === 0) {
+                        modelViewer.currentTime = 0;
+                    }
+                    modelViewer.play({ repetitions: 1 });
+                    setPlayState();
+                }
+            });
+
+            modelViewer.addEventListener('finished', () => {
+                setReplayState();
+            });
+
+            modelViewer.addEventListener('timeupdate', () => {
+                if (isPlaying && modelViewer.duration && modelViewer.currentTime >= (modelViewer.duration - 0.05)) {
+                    modelViewer.pause();
+                    modelViewer.currentTime = modelViewer.duration;
+                    setReplayState();
+                }
+            });
+        }
 
         if (modelViewer && toggleRotateBtn) {
             toggleRotateBtn.addEventListener('click', () => {

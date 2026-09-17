@@ -724,36 +724,11 @@ footer {
 /* Interactive 3D Model Viewer Card */
 .cew-3d-card {
     min-height: unset;
-    padding: 2.2rem 2rem 1.8rem;
+    padding: 1.6rem 1.6rem 1.4rem;
     align-items: stretch;
     margin-top: 2.5rem;
     background: rgba(30, 20, 18, 0.7);
     border: 1px solid rgba(160, 189, 219, 0.22);
-}
-
-.cew-3d-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 1.2rem;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-}
-
-.cew-3d-header .cew-media-tag {
-    margin-bottom: 0;
-}
-
-.cew-3d-status {
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--color-pink);
-    opacity: 0.7;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
 }
 
 .cew-model-wrapper {
@@ -854,6 +829,29 @@ model-viewer.cew-model-viewer {
     background: rgba(160, 189, 219, 0.2);
     border-color: var(--color-sage);
     color: #fff;
+}
+
+.cew-3d-play-btn {
+    background: var(--color-sage);
+    color: var(--color-dark-brown);
+    border-color: var(--color-sage);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    box-shadow: 0 4px 14px rgba(160, 189, 219, 0.25);
+}
+
+.cew-3d-play-btn:hover {
+    background: #c2d7ed;
+    border-color: #c2d7ed;
+    color: var(--color-dark-brown);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(160, 189, 219, 0.35);
+}
+
+.cew-3d-play-btn:active {
+    transform: translateY(0);
 }
 
 @media (max-width: 768px) {
