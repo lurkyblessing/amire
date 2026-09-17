@@ -53,9 +53,9 @@ h1, h2, h3,
 .hero-subtitle,
 .sarafina-header,
 .founder-quote {
-    font-family: 'Groovezilla', 'Baskerville', serif;
+    font-family: 'Baskerville', 'Libre Baskerville', 'Playfair Display', serif;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
 }
 
 /* --------------------
