@@ -106,9 +106,8 @@ body {
 .center-logo {
     width: 65vw;
     max-width: 900px;
-    height: 30vh;
-    object-fit: cover;
-    object-position: center;
+    height: auto;
+    object-fit: contain;
     margin-bottom: 2rem;
 }
 
