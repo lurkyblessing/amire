@@ -505,6 +505,14 @@ footer {
     margin: 0 auto;
 }
 
+.cew-hero-logo {
+    width: clamp(260px, 46vw, 620px);
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto 2.5rem;
+    display: block;
+}
+
 .cew-headline {
     font-family: 'Baskerville', 'Libre Baskerville', serif;
     font-size: clamp(2.6rem, 6.5vw, 5.5rem);
