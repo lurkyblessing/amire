@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>amiré - Sarafina Shades</title>
     <meta name="description" content="Discover Sarafina Shades, the flagship product from amiré functional beauty.">
-    <link rel="stylesheet" href="style.css?v=1015">
+    <link rel="stylesheet" href="style.css?v=1016">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Google Model Viewer for interactive 3D WebGL render -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 <body>
         <header class="main-header">
@@ -24,7 +26,45 @@
     <main class="sarafina-split">
         <div class="sarafina-left">
             <div class="sarafina-image-container" id="reveal-image">
-                <span class="sarafina-image-placeholder">Sarafina Shades</span>
+                <div class="sarafina-3d-hint">
+                    <span class="cew-3d-hint-dot"></span>
+                    drag to rotate 360&deg; &bull; pinch / scroll to zoom
+                </div>
+
+                <model-viewer
+                    id="sarafina-3d-viewer"
+                    src="cartridge-model.glb"
+                    alt="amiré Sarafina Shades Cartridge 3D Model"
+                    animation-name="cartridge|cartridge|cartridgeAction"
+                    auto-rotate
+                    rotation-per-second="16deg"
+                    camera-controls
+                    touch-action="pan-y"
+                    shadow-intensity="1.5"
+                    shadow-softness="0.8"
+                    exposure="1.2"
+                    environment-image="neutral"
+                    interaction-prompt="auto"
+                    class="sarafina-model-viewer">
+                    <div slot="poster" class="cew-model-loading">
+                        <div class="cew-loader-spinner"></div>
+                        <span>rendering 3d model...</span>
+                    </div>
+                </model-viewer>
+
+                <div class="sarafina-3d-controls">
+                    <button type="button" class="cew-3d-btn cew-3d-play-btn" id="sarafina-play-anim-btn">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        <span>Play Animation</span>
+                    </button>
+                    <button type="button" class="cew-3d-btn" id="sarafina-toggle-rotate-btn">
+                        Pause Auto-Spin
+                    </button>
+                    <button type="button" class="cew-3d-btn" id="sarafina-reset-cam-btn">
+                        Reset View
+                    </button>
+                </div>
+
                 <div class="sarafina-active-tag" id="active-tag"></div>
             </div>
         </div>
@@ -90,12 +130,98 @@
     </footer>
 
     <script>
+        // 3D Model Viewer Controls & Animation
+        const modelViewer = document.getElementById('sarafina-3d-viewer');
+        const playAnimBtn = document.getElementById('sarafina-play-anim-btn');
+        const toggleRotateBtn = document.getElementById('sarafina-toggle-rotate-btn');
+        const resetCamBtn = document.getElementById('sarafina-reset-cam-btn');
+
+        if (modelViewer && playAnimBtn) {
+            let isPlaying = false;
+
+            const setPlayState = () => {
+                isPlaying = true;
+                playAnimBtn.innerHTML = `
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                    <span>Pause Animation</span>
+                `;
+            };
+
+            const setPauseState = () => {
+                isPlaying = false;
+                playAnimBtn.innerHTML = `
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <span>Resume Animation</span>
+                `;
+            };
+
+            const setReplayState = () => {
+                isPlaying = false;
+                playAnimBtn.innerHTML = `
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                    <span>Replay Animation</span>
+                `;
+            };
+
+            modelViewer.addEventListener('load', () => {
+                modelViewer.pause();
+                modelViewer.currentTime = 0;
+            });
+
+            playAnimBtn.addEventListener('click', () => {
+                if (isPlaying) {
+                    modelViewer.pause();
+                    setPauseState();
+                } else {
+                    if (modelViewer.currentTime >= (modelViewer.duration - 0.05) || modelViewer.currentTime === 0) {
+                        modelViewer.currentTime = 0;
+                    }
+                    modelViewer.play({ repetitions: 1 });
+                    setPlayState();
+                }
+            });
+
+            modelViewer.addEventListener('finished', () => {
+                setReplayState();
+            });
+
+            modelViewer.addEventListener('timeupdate', () => {
+                if (isPlaying && modelViewer.duration && modelViewer.currentTime >= (modelViewer.duration - 0.05)) {
+                    modelViewer.pause();
+                    modelViewer.currentTime = modelViewer.duration;
+                    setReplayState();
+                }
+            });
+        }
+
+        if (modelViewer && toggleRotateBtn) {
+            toggleRotateBtn.addEventListener('click', () => {
+                if (modelViewer.hasAttribute('auto-rotate')) {
+                    modelViewer.removeAttribute('auto-rotate');
+                    toggleRotateBtn.textContent = 'Start Auto-Spin';
+                } else {
+                    modelViewer.setAttribute('auto-rotate', '');
+                    toggleRotateBtn.textContent = 'Pause Auto-Spin';
+                }
+            });
+        }
+
+        if (modelViewer && resetCamBtn) {
+            resetCamBtn.addEventListener('click', () => {
+                modelViewer.cameraOrbit = 'unset';
+                modelViewer.cameraTarget = 'unset';
+                modelViewer.fieldOfView = 'unset';
+                if (typeof modelViewer.resetTurntableRotation === 'function') {
+                    modelViewer.resetTurntableRotation();
+                }
+            });
+        }
+
         const items = document.querySelectorAll('.shade-item');
         const defaultDesc = document.getElementById('description');
         const dynamicDesc = document.getElementById('dynamic-desc');
         const revealImage = document.getElementById('reveal-image');
         const activeTag = document.getElementById('active-tag');
-        const placeholder = revealImage ? revealImage.querySelector('.sarafina-image-placeholder') : null;
 
         // Instant touch responsiveness
         document.addEventListener('touchstart', function() {}, { passive: true });
@@ -123,10 +249,6 @@
                     } else if (bgColor) {
                         revealImage.style.backgroundImage = 'none';
                         revealImage.style.backgroundColor = bgColor;
-                    }
-                    if (placeholder) {
-                        placeholder.style.opacity = '0.18';
-                        placeholder.style.transform = 'scale(0.95)';
                     }
                 }
                 
