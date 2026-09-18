@@ -365,10 +365,6 @@ h1, h2, h3,
     touch-action: manipulation;
 }
 
-.shade-item:nth-child(even) {
-    transform: translateY(24px);
-}
-
 .color-swatch {
     width: 60px;
     height: 60px;
@@ -599,10 +595,6 @@ footer {
         gap: 1.6rem;
         justify-content: center;
         margin-bottom: 3.5rem;
-    }
-
-    .shade-item:nth-child(even) {
-        transform: translateY(16px);
     }
 
     .founder-content {
