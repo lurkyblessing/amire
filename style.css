@@ -1720,3 +1720,30 @@ model-viewer.cew-model-viewer {
     }
 }
 
+
+/* ---------- Sarafina 3D glasses viewer (sarafina-viewer.js) ---------- */
+#stage canvas { display: block; width: 100%; height: 100%; outline: none; }
+.sarafina-3d-controls { right: 1.4rem; }
+.sarafina-active-tag { top: 1.4rem; right: 1.4rem; bottom: auto; }
+.sarafina-tip-toggle {
+    display: inline-flex;
+    gap: 0.2rem;
+    padding: 0.2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(160, 189, 219, 0.28);
+    background: rgba(30, 20, 18, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.sarafina-tip-toggle .cew-3d-btn { border-color: transparent; background: transparent; }
+.sarafina-tip-toggle .cew-3d-btn[aria-pressed="true"] { background: var(--color-sage); color: var(--color-brown); }
+.sarafina-3d-controls .cew-3d-btn[aria-pressed="false"]:not([data-ctype]) { opacity: 0.6; }
+.sarafina-3d-controls .cew-3d-btn:disabled { opacity: 0.45; cursor: default; }
+.sarafina-3d-controls .cew-3d-btn:focus-visible { outline: 2px solid var(--color-sage); outline-offset: 2px; }
+@media (max-width: 900px) {
+    .sarafina-3d-controls { left: 0.6rem; right: 0.6rem; bottom: 0.6rem; gap: 0.35rem; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .sarafina-3d-controls::-webkit-scrollbar { display: none; }
+    .sarafina-3d-controls .cew-3d-btn, .sarafina-tip-toggle { flex: none; white-space: nowrap; }
+    .sarafina-active-tag { top: 0.6rem; right: 0.6rem; }
+}
+#sarafina-twist-btn { color: var(--color-brown); }
