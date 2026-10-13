@@ -5,95 +5,195 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>amiré functional beauty</title>
     <meta name="description" content="functional beauty for the effortless cool girl.">
-    <link rel="stylesheet" href="style.css?v=1020">
+    <meta name="theme-color" content="#faedf1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-
-    
+    <link rel="preload" as="image" href="sarafina-render-gold.webp">
+    <link rel="stylesheet" href="site-v2.css?v=2">
 </head>
 <body>
-        <header class="main-header">
-        <a href="/" class="submark-link">
-            <img src="amire-top-left-logo.png" alt="amiré logo" class="submark-img">
-        </a>
-        <nav class="nav-links">
-            <a href="/sarafina-shades">Sarafina Shades</a>
-            <a href="/founder">Our Founder</a>
-        </nav>
+    <div class="promo">
+        sarafina shades are utility patent pending. <a href="#signup">join the list</a> for first access.
+    </div>
+
+    <header class="site-header">
+        <div class="wrap">
+            <nav class="site-nav" aria-label="Main">
+                <a href="/sarafina-shades">Sarafina Shades</a>
+                <a href="/founder">Our Founder</a>
+            </nav>
+            <a href="/" class="brand" aria-label="amiré home" aria-current="page">
+                <img src="amire-wordmark-brown.png" alt="amiré" width="905" height="326">
+            </a>
+            <a href="#signup" class="header-cta">Join the list</a>
+        </div>
     </header>
 
-    <main class="hero-section">
-        <img src="new-amire-logo.png?v=2" alt="amiré logo" class="center-logo">
-        <h1 class="hero-subtitle baskerville-font">finally, functional beauty.</h1>
-        
-        
-        
-        
-        
-                <div class="notify-form-container">
-            <form action="https://app.kit.com/forms/9818596/subscriptions" method="post" class="notify-form">
-                <div style="display: flex; width: 100%;">
-                    <input type="email" id="email-input" name="email_address" placeholder="Enter email to get notified" required>
-                    <button type="submit" class="notify-btn">Join</button>
+    <main>
+        <!-- HERO -->
+        <section class="l-hero">
+            <div class="wrap">
+                <div class="l-hero-copy">
+                    <h1 class="serif">finally, functional beauty.</h1>
+                    <p>meet the sarafina shades: sunglasses that keep your lip combo in the temple, right where your hand reaches.</p>
+                    <div class="actions">
+                        <a href="#signup" class="btn">Join the list</a>
+                        <a href="/sarafina-shades" class="text-link">Explore Sarafina Shades</a>
+                    </div>
                 </div>
-            </form>
-        </div>
-    </main>
+                <div class="l-hero-media">
+                    <img src="sarafina-render-gold.webp" alt="Sarafina Shades in gold morádé" width="1077" height="738" fetchpriority="high">
+                </div>
+            </div>
+        </section>
 
-    <footer>
-        <div class="footer-content">
-            <a href="/" class="submark-link">
-                <img src="amire-footer-logo.png" alt="amiré logo" class="submark-img">
-            </a>
-            <div class="social-links">
-                <a href="https://instagram.com/amirecosmetics" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="currentColor"/></svg>
-                    <span>Instagram</span>
+        <!-- COLORWAYS -->
+        <section class="shades wrap" aria-labelledby="shades-title">
+            <div class="shades-head reveal">
+                <h2 class="serif" id="shades-title">five ways to wear your crown.</h2>
+            </div>
+            <div class="shade-grid">
+                <a class="shade-card reveal" href="/sarafina-shades">
+                    <div class="tile">
+                        <span class="chip" style="background-image:url('morade-silver-swatch.png')" aria-hidden="true"></span>
+                        <img src="sarafina-render-silver.webp" alt="Sarafina Shades in silver morádé" loading="lazy" width="1077" height="738">
+                    </div>
+                    <div class="meta">
+                        <div class="name">morádé (s)</div>
+                        <div class="desc">for girls ready to wear their crown.</div>
+                        <span class="status">Coming soon</span>
+                    </div>
                 </a>
-                <a href="https://tiktok.com/@amirebeauty" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-                    <span>TikTok</span>
+                <a class="shade-card reveal" href="/sarafina-shades">
+                    <div class="tile">
+                        <span class="chip" style="background-image:url('morade-gold-swatch.png')" aria-hidden="true"></span>
+                        <img src="sarafina-render-gold.webp" alt="Sarafina Shades in gold morádé" loading="lazy" width="1077" height="738">
+                    </div>
+                    <div class="meta">
+                        <div class="name">morádé (g)</div>
+                        <div class="desc">whatever your statement, your bling says &ldquo;i&rsquo;m here.&rdquo;</div>
+                        <span class="status">Coming soon</span>
+                    </div>
+                </a>
+                <a class="shade-card reveal" href="/sarafina-shades">
+                    <div class="tile">
+                        <span class="chip" style="background-image:url('abiola-swatch.jpg')" aria-hidden="true"></span>
+                        <img src="sarafina-render-abiola.webp" alt="Sarafina Shades in abíọlá tortoise" loading="lazy" width="1077" height="738">
+                    </div>
+                    <div class="meta">
+                        <div class="name">abíọlá</div>
+                        <div class="desc">a bold statement for the trendsetter who isn't afraid to stand out.</div>
+                        <span class="status">Coming soon</span>
+                    </div>
+                </a>
+                <a class="shade-card reveal" href="/sarafina-shades">
+                    <div class="tile">
+                        <span class="chip" style="background-image:url('damiana-swatch.png')" aria-hidden="true"></span>
+                        <img src="sarafina-render-damiana.webp" alt="Sarafina Shades in damiana bordeaux" loading="lazy" width="1077" height="738">
+                    </div>
+                    <div class="meta">
+                        <div class="name">damiana</div>
+                        <div class="desc">luxury doesn't scream, it speaks.</div>
+                        <span class="status">Coming soon</span>
+                    </div>
+                </a>
+                <a class="shade-card reveal" href="/sarafina-shades">
+                    <div class="tile">
+                        <span class="chip" style="background:#a0bddb" aria-hidden="true"></span>
+                        <img src="sarafina-render-abeke.webp" alt="Sarafina Shades in àbẹ̀kẹ́ sky blue" loading="lazy" width="1077" height="738">
+                    </div>
+                    <div class="meta">
+                        <div class="name">àbẹ̀kẹ́</div>
+                        <div class="desc">cool and balanced, the perfect finishing touch.</div>
+                        <span class="status">Coming soon</span>
+                    </div>
                 </a>
             </div>
+        </section>
+
+        <!-- FEATURE -->
+        <section class="feature" aria-labelledby="feature-title">
+            <div class="wrap">
+                <div class="feature-media reveal">
+                    <img src="sarafina-render-twist.webp" alt="Sarafina Shades with the lip applicator detached from the temple" loading="lazy" width="1100" height="641">
+                </div>
+                <div class="reveal">
+                    <h2 class="serif" id="feature-title">suns up, <em>pouts out.</em></h2>
+                    <p>sarafinas are the cool girl's way of keeping her lip combo right where she needs it all day. twist it up, detach the applicator, and slide it back in when you're done.</p>
+                    <ul class="tips">
+                        <li><span>Tip</span>lipstick</li>
+                        <li><span>Tip</span>liner</li>
+                        <li><span>Tip</span>gloss</li>
+                    </ul>
+                    <a href="/sarafina-shades" class="btn btn-light">Explore Sarafina Shades</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOUNDER TEASER -->
+        <section class="teaser">
+            <div class="wrap">
+                <div class="reveal">
+                    <blockquote>&ldquo;beauty isn't just what you apply; it is how you move through the world.&rdquo;</blockquote>
+                    <cite>Bless, founder &amp; creative director</cite>
+                    <a href="/founder" class="text-link">Meet Bless</a>
+                </div>
+                <div class="teaser-photo reveal">
+                    <img src="founder-2.jpg" alt="Bless winking with sunglasses on her head" loading="lazy" width="1024" height="647">
+                </div>
+            </div>
+        </section>
+
+        <!-- SIGNUP -->
+        <section class="signup on-pink" id="signup">
+            <div class="wrap reveal">
+                <h2 class="serif">be the first to know.</h2>
+                <p class="mantra" lang="yo">èmí reé. awa reé. a ti dé.</p>
+                <form action="https://app.kit.com/forms/9818596/subscriptions" method="post">
+                    <label for="email-input">Email address</label>
+                    <div class="row">
+                        <input type="email" id="email-input" name="email_address" placeholder="you@email.com" autocomplete="email" required>
+                        <button type="submit" class="btn">Join</button>
+                    </div>
+                    <small>launch news and new shade drops only. unsubscribe anytime.</small>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <a href="/" class="footer-logo" aria-label="amiré home">
+                    <img src="amire-wordmark-cream.png" alt="amiré" width="904" height="326" loading="lazy">
+                </a>
+                <div>
+                    <h3>Navigate</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/sarafina-shades">Sarafina Shades</a></li>
+                        <li><a href="/founder">Our Founder</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="https://instagram.com/amirecosmetics" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                        <li><a href="https://tiktok.com/@amirebeauty" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Stay close</h3>
+                    <ul>
+                        <li><a href="#signup">Join the list</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="footer-base">&copy; 2026 amiré. All rights reserved.</p>
         </div>
-        <p class="copyright">&copy; 2026 amiré. All rights reserved.</p>
     </footer>
 
-    
-
-    <script>
-        // Smart Sticky Header with dynamic mobile offset
-        let lastScrollTop = 0;
-        const header = document.querySelector('.main-header');
-        const threshold = 6;
-
-        function setHeaderOffset(offset) {
-            document.documentElement.style.setProperty('--header-offset', offset + 'px');
-        }
-
-        if (header) {
-            setHeaderOffset(header.offsetHeight);
-            window.addEventListener('resize', () => {
-                if (header.style.transform !== 'translateY(-100%)') {
-                    setHeaderOffset(header.offsetHeight);
-                }
-            });
-
-            window.addEventListener('scroll', () => {
-                let scrollTop = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
-                if (Math.abs(scrollTop - lastScrollTop) <= threshold) return;
-
-                if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
-                    header.style.transform = 'translateY(-100%)';
-                    setHeaderOffset(0);
-                } else {
-                    header.style.transform = 'translateY(0)';
-                    setHeaderOffset(header.offsetHeight);
-                }
-                lastScrollTop = scrollTop;
-            }, { passive: true });
-        }
-    </script>
+    <script src="site-v2.js?v=1" defer></script>
 </body>
 </html>
