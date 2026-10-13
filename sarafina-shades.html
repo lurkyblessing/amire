@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>amiré - Sarafina Shades</title>
     <meta name="description" content="Discover Sarafina Shades, the flagship product from amiré functional beauty.">
-    <link rel="stylesheet" href="style.css?v=1020">
+    <link rel="stylesheet" href="style.css?v=1021">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-    <!-- Google Model Viewer for interactive 3D WebGL render -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 <body>
         <header class="main-header">
@@ -31,38 +29,21 @@
                     drag to rotate 360&deg; &bull; pinch / scroll to zoom
                 </div>
 
-                <model-viewer
-                    id="sarafina-3d-viewer"
-                    src="cartridge-model.glb"
-                    alt="amiré Sarafina Shades Cartridge 3D Model"
-                    animation-name="cartridge|cartridge|cartridgeAction"
-                    auto-rotate
-                    rotation-per-second="16deg"
-                    camera-controls
-                    touch-action="pan-y"
-                    shadow-intensity="1.5"
-                    shadow-softness="0.8"
-                    exposure="1.2"
-                    environment-image="neutral"
-                    interaction-prompt="auto"
-                    class="sarafina-model-viewer">
-                    <div slot="poster" class="cew-model-loading">
-                        <div class="cew-loader-spinner"></div>
-                        <span>rendering 3d model...</span>
-                    </div>
-                </model-viewer>
+                <div id="stage" class="sarafina-model-viewer" role="img" aria-label="Interactive 3D model of Sarafina Shades"></div>
 
-                <div class="sarafina-3d-controls">
-                    <button type="button" class="cew-3d-btn cew-3d-play-btn" id="sarafina-play-anim-btn">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                        <span>Play Animation</span>
-                    </button>
-                    <button type="button" class="cew-3d-btn" id="sarafina-toggle-rotate-btn">
-                        Pause Auto-Spin
-                    </button>
-                    <button type="button" class="cew-3d-btn" id="sarafina-reset-cam-btn">
-                        Reset View
-                    </button>
+                <div class="sarafina-3d-controls" id="sarafina-controls">
+                    <div class="sarafina-tip-toggle" role="group" aria-label="Applicator tip">
+                        <button type="button" class="cew-3d-btn" data-ctype="lipstick" aria-pressed="true">lipstick</button>
+                        <button type="button" class="cew-3d-btn" data-ctype="liner" aria-pressed="false">liner</button>
+                        <button type="button" class="cew-3d-btn" data-ctype="gloss" aria-pressed="false">gloss</button>
+                    </div>
+                    <button type="button" class="cew-3d-btn cew-3d-play-btn" id="sarafina-twist-btn">twist up</button>
+                    <button type="button" class="cew-3d-btn" id="sarafina-detach-btn">detach applicator</button>
+                    <button type="button" class="cew-3d-btn" id="sarafina-fold-btn">fold</button>
+                    <button type="button" class="cew-3d-btn" id="sarafina-lens-btn" aria-pressed="true">lenses on</button>
+                    <button type="button" class="cew-3d-btn" id="sarafina-gems-btn" aria-pressed="true">gems on</button>
+                    <button type="button" class="cew-3d-btn" id="sarafina-toggle-rotate-btn">pause spin</button>
+                    <button type="button" class="cew-3d-btn" id="sarafina-reset-cam-btn">reset view</button>
                 </div>
 
                 <div class="sarafina-active-tag" id="active-tag"></div>
@@ -82,23 +63,23 @@
 
             <div class="swatches-grid" id="colorways">
                 <div class="shade-item">
-                    <div class="color-swatch" data-desc="for girls ready to wear their crown. this stunning silver morádé is a perfect staple in your closet. so whatever your statement, your bling says “i’m here”" style="background-image: url('morade-silver-swatch.png'); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.2);"></div>
+                    <div class="color-swatch" data-finish="silver" data-desc="for girls ready to wear their crown. this stunning silver morádé is a perfect staple in your closet. so whatever your statement, your bling says “i’m here”" style="background-image: url('morade-silver-swatch.png'); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.2);"></div>
                     <span class="shade-name">morádé (s)</span>
                 </div>
                 <div class="shade-item">
-                    <div class="color-swatch" data-desc="for girls ready to wear their crown. this stunning gold morádé is a perfect staple in your closet. so whatever your statement, your bling says “i’m here”" style="background-image: url('morade-gold-swatch.png'); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.2);"></div>
+                    <div class="color-swatch" data-finish="gold" data-desc="for girls ready to wear their crown. this stunning gold morádé is a perfect staple in your closet. so whatever your statement, your bling says “i’m here”" style="background-image: url('morade-gold-swatch.png'); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.2);"></div>
                     <span class="shade-name">morádé (g)</span>
                 </div>
                 <div class="shade-item">
-                    <div class="color-swatch" data-desc="a bold statement for the trendsetter who isn't afraid to stand out." style="background-image: url('abiola-swatch.jpg'); background-size: cover; background-position: center;"></div>
+                    <div class="color-swatch" data-finish="abiola" data-desc="a bold statement for the trendsetter who isn't afraid to stand out." style="background-image: url('abiola-swatch.jpg'); background-size: cover; background-position: center;"></div>
                     <span class="shade-name">Abíọlá</span>
                 </div>
                 <div class="shade-item">
-                    <div class="color-swatch" data-desc="luxury doesn't scream, it speaks. so damiana can be heard loud and clear. the striking bordeaux with the perfect amount of sparkle ensures that this isn't loud but tells your story" style="background-image: url('damiana-swatch.png'); background-size: cover; background-position: center;"></div>
+                    <div class="color-swatch" data-finish="damiana" data-desc="luxury doesn't scream, it speaks. so damiana can be heard loud and clear. the striking bordeaux with the perfect amount of sparkle ensures that this isn't loud but tells your story" style="background-image: url('damiana-swatch.png'); background-size: cover; background-position: center;"></div>
                     <span class="shade-name">damiana</span>
                 </div>
                 <div class="shade-item">
-                    <div class="color-swatch" data-desc="cool and balanced, the perfect finishing touch for a flawless vibe." style="background-color: var(--color-sage);"></div>
+                    <div class="color-swatch" data-finish="abeke" data-desc="cool and balanced, the perfect finishing touch for a flawless vibe." style="background-color: var(--color-sage);"></div>
                     <span class="shade-name">Àbẹ̀kẹ́</span>
                 </div>
             </div>
@@ -127,92 +108,29 @@
     </footer>
 
     <script>
-        // 3D Model Viewer Controls & Animation
-        const modelViewer = document.getElementById('sarafina-3d-viewer');
-        const playAnimBtn = document.getElementById('sarafina-play-anim-btn');
-        const toggleRotateBtn = document.getElementById('sarafina-toggle-rotate-btn');
-        const resetCamBtn = document.getElementById('sarafina-reset-cam-btn');
-
-        if (modelViewer && playAnimBtn) {
-            let isPlaying = false;
-
-            const setPlayState = () => {
-                isPlaying = true;
-                playAnimBtn.innerHTML = `
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-                    <span>Pause Animation</span>
-                `;
+        // 3D viewer controls (sarafina-viewer.js exposes window.SarafinaViewer)
+        function wireViewer() {
+            const v = window.SarafinaViewer;
+            const $id = id => document.getElementById(id);
+            const twist = $id('sarafina-twist-btn'), detach = $id('sarafina-detach-btn'), fold = $id('sarafina-fold-btn');
+            const lens = $id('sarafina-lens-btn'), gems = $id('sarafina-gems-btn'), spin = $id('sarafina-toggle-rotate-btn');
+            const all = [twist, detach, fold, ...document.querySelectorAll('[data-ctype]')];
+            const sync = ({ busy } = {}) => {
+                twist.textContent = v.isTwisted() ? 'twist down' : 'twist up';
+                detach.textContent = v.isDetached() ? 'attach applicator' : 'detach applicator';
+                fold.textContent = v.isFolded() ? 'unfold' : 'fold';
+                all.forEach(b => { b.disabled = !!busy; });
             };
-
-            const setPauseState = () => {
-                isPlaying = false;
-                playAnimBtn.innerHTML = `
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                    <span>Resume Animation</span>
-                `;
-            };
-
-            const setReplayState = () => {
-                isPlaying = false;
-                playAnimBtn.innerHTML = `
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-                    <span>Replay Animation</span>
-                `;
-            };
-
-            modelViewer.addEventListener('load', () => {
-                modelViewer.pause();
-                modelViewer.currentTime = 0;
-            });
-
-            playAnimBtn.addEventListener('click', () => {
-                if (isPlaying) {
-                    modelViewer.pause();
-                    setPauseState();
-                } else {
-                    if (modelViewer.currentTime >= (modelViewer.duration - 0.05) || modelViewer.currentTime === 0) {
-                        modelViewer.currentTime = 0;
-                    }
-                    modelViewer.play({ repetitions: 1 });
-                    setPlayState();
-                }
-            });
-
-            modelViewer.addEventListener('finished', () => {
-                setReplayState();
-            });
-
-            modelViewer.addEventListener('timeupdate', () => {
-                if (isPlaying && modelViewer.duration && modelViewer.currentTime >= (modelViewer.duration - 0.05)) {
-                    modelViewer.pause();
-                    modelViewer.currentTime = modelViewer.duration;
-                    setReplayState();
-                }
-            });
+            twist.addEventListener('click', () => v.twist());
+            detach.addEventListener('click', () => v.toggleApplicator());
+            fold.addEventListener('click', () => v.fold());
+            lens.addEventListener('click', () => { const on = lens.getAttribute('aria-pressed') !== 'true'; lens.setAttribute('aria-pressed', on); lens.textContent = on ? 'lenses on' : 'lenses off'; v.setLenses(on); });
+            gems.addEventListener('click', () => { const on = gems.getAttribute('aria-pressed') !== 'true'; gems.setAttribute('aria-pressed', on); gems.textContent = on ? 'gems on' : 'gems off'; v.setGems(on); });
+            spin.addEventListener('click', () => { const on = !v.isAutoRotating(); v.setAutoRotate(on); spin.textContent = on ? 'pause spin' : 'start spin'; });
+            $id('sarafina-reset-cam-btn').addEventListener('click', () => v.resetView());
+            v.onChange(sync); sync();
         }
-
-        if (modelViewer && toggleRotateBtn) {
-            toggleRotateBtn.addEventListener('click', () => {
-                if (modelViewer.hasAttribute('auto-rotate')) {
-                    modelViewer.removeAttribute('auto-rotate');
-                    toggleRotateBtn.textContent = 'Start Auto-Spin';
-                } else {
-                    modelViewer.setAttribute('auto-rotate', '');
-                    toggleRotateBtn.textContent = 'Pause Auto-Spin';
-                }
-            });
-        }
-
-        if (modelViewer && resetCamBtn) {
-            resetCamBtn.addEventListener('click', () => {
-                modelViewer.cameraOrbit = 'unset';
-                modelViewer.cameraTarget = 'unset';
-                modelViewer.fieldOfView = 'unset';
-                if (typeof modelViewer.resetTurntableRotation === 'function') {
-                    modelViewer.resetTurntableRotation();
-                }
-            });
-        }
+        if (window.SarafinaViewer) wireViewer(); else window.addEventListener('sarafina-ready', wireViewer, { once: true });
 
         const items = document.querySelectorAll('.shade-item');
         const defaultDesc = document.getElementById('description');
@@ -238,16 +156,8 @@
                 const bgColor = swatch.style.backgroundColor;
                 const shadeName = item.querySelector('.shade-name').textContent;
                 
-                // Interactive stage update
-                if (revealImage) {
-                    if (bgImg && bgImg !== 'none') {
-                        revealImage.style.backgroundImage = bgImg;
-                        revealImage.style.backgroundColor = 'transparent';
-                    } else if (bgColor) {
-                        revealImage.style.backgroundImage = 'none';
-                        revealImage.style.backgroundColor = bgColor;
-                    }
-                }
+                // Show this colourway on the 3D frame
+                if (window.SarafinaViewer) window.SarafinaViewer.setFinish(swatch.dataset.finish);
                 
                 if (activeTag) {
                     activeTag.textContent = shadeName;
@@ -306,5 +216,10 @@
             }, { passive: true });
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/environments/RoomEnvironment.js"></script>
+    <script src="sarafina-model-data.js?v=1"></script>
+    <script src="sarafina-viewer.js?v=1"></script>
 </body>
 </html>
