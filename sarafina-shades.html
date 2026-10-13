@@ -5,106 +5,182 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>amiré - Sarafina Shades</title>
     <meta name="description" content="Discover Sarafina Shades, the flagship product from amiré functional beauty.">
-    <link rel="stylesheet" href="style.css?v=1021">
+    <meta name="theme-color" content="#fffaf0">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site-v2.css?v=3">
 </head>
 <body>
-        <header class="main-header">
-        <a href="/" class="submark-link">
-            <img src="amire-top-left-logo.png" alt="amiré logo" class="submark-img">
-        </a>
-        <nav class="nav-links">
-            <a href="/sarafina-shades" class="active">Sarafina Shades</a>
-            <a href="/founder">Our Founder</a>
-        </nav>
+    <div class="promo">
+        sarafina shades are utility patent pending. <a href="#signup">join the list</a> for first access.
+    </div>
+
+    <header class="site-header">
+        <div class="wrap">
+            <nav class="site-nav" aria-label="Main">
+                <a href="/sarafina-shades" aria-current="page">Sarafina Shades</a>
+                <a href="/founder">Our Founder</a>
+            </nav>
+            <a href="/" class="brand" aria-label="amiré home">
+                <img src="amire-wordmark-brown.png" alt="amiré" width="905" height="326">
+            </a>
+            <a href="#signup" class="header-cta">Join the list</a>
+        </div>
     </header>
 
-    <main class="sarafina-split">
-        <div class="sarafina-left">
-            <div class="sarafina-image-container" id="reveal-image">
-                <div class="sarafina-3d-hint">
-                    <span class="cew-3d-hint-dot"></span>
-                    drag to rotate 360&deg; &bull; pinch / scroll to zoom
-                </div>
+    <main>
+        <!-- PRODUCT -->
+        <section class="pdp">
+            <div class="pdp-media">
+                <div class="pdp-stage" id="reveal-image">
+                    <div class="stage-hint">Drag to rotate &bull; scroll to zoom</div>
+                    <div id="stage" class="sarafina-model-viewer" role="img" aria-label="Interactive 3D model of Sarafina Shades"></div>
+                    <div class="sarafina-active-tag" id="active-tag"></div>
 
-                <div id="stage" class="sarafina-model-viewer" role="img" aria-label="Interactive 3D model of Sarafina Shades"></div>
-
-                <div class="sarafina-3d-controls" id="sarafina-controls">
-                    <div class="sarafina-tip-toggle" role="group" aria-label="Applicator tip">
-                        <button type="button" class="cew-3d-btn" data-ctype="lipstick" aria-pressed="true">lipstick</button>
-                        <button type="button" class="cew-3d-btn" data-ctype="liner" aria-pressed="false">liner</button>
-                        <button type="button" class="cew-3d-btn" data-ctype="gloss" aria-pressed="false">gloss</button>
+                    <div class="sarafina-3d-controls" id="sarafina-controls">
+                        <div class="sarafina-tip-toggle" role="group" aria-label="Applicator tip">
+                            <button type="button" class="cew-3d-btn" data-ctype="lipstick" aria-pressed="true">lipstick</button>
+                            <button type="button" class="cew-3d-btn" data-ctype="liner" aria-pressed="false">liner</button>
+                            <button type="button" class="cew-3d-btn" data-ctype="gloss" aria-pressed="false">gloss</button>
+                        </div>
+                        <button type="button" class="cew-3d-btn cew-3d-play-btn" id="sarafina-twist-btn">twist up</button>
+                        <button type="button" class="cew-3d-btn" id="sarafina-detach-btn">detach applicator</button>
+                        <button type="button" class="cew-3d-btn" id="sarafina-fold-btn">fold</button>
+                        <button type="button" class="cew-3d-btn" id="sarafina-lens-btn" aria-pressed="true">lenses on</button>
+                        <button type="button" class="cew-3d-btn" id="sarafina-gems-btn" aria-pressed="true">gems on</button>
+                        <button type="button" class="cew-3d-btn" id="sarafina-toggle-rotate-btn">pause spin</button>
+                        <button type="button" class="cew-3d-btn" id="sarafina-reset-cam-btn">reset view</button>
                     </div>
-                    <button type="button" class="cew-3d-btn cew-3d-play-btn" id="sarafina-twist-btn">twist up</button>
-                    <button type="button" class="cew-3d-btn" id="sarafina-detach-btn">detach applicator</button>
-                    <button type="button" class="cew-3d-btn" id="sarafina-fold-btn">fold</button>
-                    <button type="button" class="cew-3d-btn" id="sarafina-lens-btn" aria-pressed="true">lenses on</button>
-                    <button type="button" class="cew-3d-btn" id="sarafina-gems-btn" aria-pressed="true">gems on</button>
-                    <button type="button" class="cew-3d-btn" id="sarafina-toggle-rotate-btn">pause spin</button>
-                    <button type="button" class="cew-3d-btn" id="sarafina-reset-cam-btn">reset view</button>
-                </div>
-
-                <div class="sarafina-active-tag" id="active-tag"></div>
-            </div>
-        </div>
-        
-        <div class="sarafina-right">
-            <h2 class="sarafina-header">Sarafina Shades</h2>
-            <div class="sarafina-mobile-hint">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12l4 4 4-4"></path></svg>
-                tap swatches to preview on stage
-            </div>
-            <p class="sarafina-copy" id="description">
-                <i>ready for sun-thing special?</i><br><br>
-                suns up, pouts out with our sarafina shades. sarafinas are the cool girls way of keeping her lip combo right where she needs it all day. so no matter what life throws your way, you can say with ease èmí reé!
-            </p>
-
-            <div class="swatches-grid" id="colorways">
-                <div class="shade-item">
-                    <div class="color-swatch" data-finish="silver" data-desc="for girls ready to wear their crown. this stunning silver morádé is a perfect staple in your closet. so whatever your statement, your bling says “i’m here”" style="background-image: url('morade-silver-swatch.png'); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.2);"></div>
-                    <span class="shade-name">morádé (s)</span>
-                </div>
-                <div class="shade-item">
-                    <div class="color-swatch" data-finish="gold" data-desc="for girls ready to wear their crown. this stunning gold morádé is a perfect staple in your closet. so whatever your statement, your bling says “i’m here”" style="background-image: url('morade-gold-swatch.png'); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.2);"></div>
-                    <span class="shade-name">morádé (g)</span>
-                </div>
-                <div class="shade-item">
-                    <div class="color-swatch" data-finish="abiola" data-desc="a bold statement for the trendsetter who isn't afraid to stand out." style="background-image: url('abiola-swatch.jpg'); background-size: cover; background-position: center;"></div>
-                    <span class="shade-name">Abíọlá</span>
-                </div>
-                <div class="shade-item">
-                    <div class="color-swatch" data-finish="damiana" data-desc="luxury doesn't scream, it speaks. so damiana can be heard loud and clear. the striking bordeaux with the perfect amount of sparkle ensures that this isn't loud but tells your story" style="background-image: url('damiana-swatch.png'); background-size: cover; background-position: center;"></div>
-                    <span class="shade-name">damiana</span>
-                </div>
-                <div class="shade-item">
-                    <div class="color-swatch" data-finish="abeke" data-desc="cool and balanced, the perfect finishing touch for a flawless vibe." style="background-color: var(--color-sage);"></div>
-                    <span class="shade-name">Àbẹ̀kẹ́</span>
                 </div>
             </div>
 
-            <div id="dynamic-desc" class="shade-description"></div>
-        </div>
+            <div class="pdp-info">
+                <div class="kicker">Utility patent pending</div>
+                <h1 class="serif">sarafina shades</h1>
+                <p class="tagline">ready for sun-thing special?</p>
+                <p class="sarafina-copy" id="description">suns up, pouts out with our sarafina shades. sarafinas are the cool girl's way of keeping her lip combo right where she needs it all day. so no matter what life throws your way, you can say with ease èmí reé!</p>
+
+                <div class="colorway-label">Colorway <span id="colorway-name">pick one</span></div>
+                <div class="swatches-grid" id="colorways" role="group" aria-label="Colorways">
+                    <button type="button" class="shade-item" aria-pressed="false">
+                        <span class="color-swatch" data-finish="silver" data-desc="for girls ready to wear their crown. this stunning silver morádé is a perfect staple in your closet. so whatever your statement, your bling says “i’m here”" style="background-image: url('morade-silver-swatch.png')"></span>
+                        <span class="shade-name">morádé (s)</span>
+                    </button>
+                    <button type="button" class="shade-item" aria-pressed="false">
+                        <span class="color-swatch" data-finish="gold" data-desc="for girls ready to wear their crown. this stunning gold morádé is a perfect staple in your closet. so whatever your statement, your bling says “i’m here”" style="background-image: url('morade-gold-swatch.png')"></span>
+                        <span class="shade-name">morádé (g)</span>
+                    </button>
+                    <button type="button" class="shade-item" aria-pressed="false">
+                        <span class="color-swatch" data-finish="abiola" data-desc="a bold statement for the trendsetter who isn't afraid to stand out." style="background-image: url('abiola-swatch.jpg')"></span>
+                        <span class="shade-name">abíọlá</span>
+                    </button>
+                    <button type="button" class="shade-item" aria-pressed="false">
+                        <span class="color-swatch" data-finish="damiana" data-desc="luxury doesn't scream, it speaks. so damiana can be heard loud and clear. the striking bordeaux with the perfect amount of sparkle ensures that this isn't loud but tells your story" style="background-image: url('damiana-swatch.png')"></span>
+                        <span class="shade-name">damiana</span>
+                    </button>
+                    <button type="button" class="shade-item" aria-pressed="false">
+                        <span class="color-swatch" data-finish="abeke" data-desc="cool and balanced, the perfect finishing touch for a flawless vibe." style="background-color: #a0bddb"></span>
+                        <span class="shade-name">àbẹ̀kẹ́</span>
+                    </button>
+                </div>
+                <div id="dynamic-desc" class="shade-description" aria-live="polite"></div>
+
+                <div class="pdp-cta">
+                    <a href="#signup" class="btn">Join the waitlist</a>
+                    <small>sarafina shades aren't available yet. join the list and you'll hear first when they drop.</small>
+                </div>
+
+                <div class="accordion">
+                    <details open>
+                        <summary>Details</summary>
+                        <div class="body">
+                            <ul>
+                                <li>your lip formula lives inside the temple assembly</li>
+                                <li>three applicator tips: lipstick, liner and gloss</li>
+                                <li>custom-engineered hinge cavity, push system and protective seal</li>
+                                <li>five colorways, from gold and silver morádé to àbẹ̀kẹ́ blue</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>How to use</summary>
+                        <div class="body">twist the temple to raise your formula, detach the applicator, apply, then slide it back in. try it on the model with the twist up and detach applicator buttons.</div>
+                    </details>
+                    <details>
+                        <summary>The name</summary>
+                        <div class="body">amiré is rooted in the yoruba affirmation èmí reé, &ldquo;here i am.&rdquo; the sarafinas are made for taking up space.</div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENGINEERING -->
+        <section class="build wrap">
+            <h2 class="serif reveal">engineered from the ground up.</h2>
+            <p class="reveal">we don't slap logos on off-the-shelf catalog hardware. every mechanism in the sarafinas was designed for this frame.</p>
+            <div class="build-grid">
+                <figure class="reveal">
+                    <div class="frame"><img src="patent-drawing-exploded-trim.png" alt="Sarafina Shades exploded assembly drawing" loading="lazy" width="791" height="312"></div>
+                    <figcaption>exploded assembly.</figcaption>
+                </figure>
+                <figure class="reveal">
+                    <div class="frame"><img src="patent-drawing-crosssection.png" alt="Sarafina Shades internal hinge cavity cross-section drawing" loading="lazy" width="1024" height="666"></div>
+                    <figcaption>internal hinge cavity, cross-section.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- SIGNUP -->
+        <section class="signup on-pink" id="signup">
+            <div class="wrap reveal">
+                <img class="signup-mark" src="amire-mark-brown.png" alt="" width="676" height="419" loading="lazy">
+                <h2 class="serif">be the first to know.</h2>
+                <p class="mantra" lang="yo">èmí reé. awa reé. a ti dé.</p>
+                <form action="https://app.kit.com/forms/9818596/subscriptions" method="post">
+                    <label for="signup-email">Email address</label>
+                    <div class="row">
+                        <input type="email" id="signup-email" name="email_address" placeholder="you@email.com" autocomplete="email" required>
+                        <button type="submit" class="btn">Join</button>
+                    </div>
+                    <small>launch news and new shade drops only. unsubscribe anytime.</small>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <a href="/" class="submark-link">
-                <img src="amire-footer-logo.png" alt="amiré logo" class="submark-img">
-            </a>
-            <div class="social-links">
-                <a href="https://instagram.com/amirecosmetics" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="currentColor"/></svg>
-                    <span>Instagram</span>
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="footer-grid">
+                <a href="/" class="footer-logo" aria-label="amiré home">
+                    <img src="amire-wordmark-cream.png" alt="amiré" width="904" height="326" loading="lazy">
                 </a>
-                <a href="https://tiktok.com/@amirebeauty" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-                    <span>TikTok</span>
-                </a>
+                <div>
+                    <h3>Navigate</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/sarafina-shades">Sarafina Shades</a></li>
+                        <li><a href="/founder">Our Founder</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="https://instagram.com/amirecosmetics" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                        <li><a href="https://tiktok.com/@amirebeauty" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Stay close</h3>
+                    <ul>
+                        <li><a href="#signup">Join the list</a></li>
+                    </ul>
+                </div>
             </div>
+            <div class="footer-base"><p>&copy; 2026 amiré. All rights reserved.</p><img src="amire-mark-sage.png" alt="" width="676" height="419" loading="lazy"></div>
         </div>
-        <p class="copyright">&copy; 2026 amiré. All rights reserved.</p>
     </footer>
 
     <script>
@@ -114,7 +190,8 @@
             const $id = id => document.getElementById(id);
             const twist = $id('sarafina-twist-btn'), detach = $id('sarafina-detach-btn'), fold = $id('sarafina-fold-btn');
             const lens = $id('sarafina-lens-btn'), gems = $id('sarafina-gems-btn'), spin = $id('sarafina-toggle-rotate-btn');
-            const all = [twist, detach, fold, ...document.querySelectorAll('[data-ctype]')];
+            const tips = document.querySelectorAll('[data-ctype]');
+            const all = [twist, detach, fold, ...tips];
             const sync = ({ busy } = {}) => {
                 twist.textContent = v.isTwisted() ? 'twist down' : 'twist up';
                 detach.textContent = v.isDetached() ? 'attach applicator' : 'detach applicator';
@@ -127,95 +204,39 @@
             lens.addEventListener('click', () => { const on = lens.getAttribute('aria-pressed') !== 'true'; lens.setAttribute('aria-pressed', on); lens.textContent = on ? 'lenses on' : 'lenses off'; v.setLenses(on); });
             gems.addEventListener('click', () => { const on = gems.getAttribute('aria-pressed') !== 'true'; gems.setAttribute('aria-pressed', on); gems.textContent = on ? 'gems on' : 'gems off'; v.setGems(on); });
             spin.addEventListener('click', () => { const on = !v.isAutoRotating(); v.setAutoRotate(on); spin.textContent = on ? 'pause spin' : 'start spin'; });
+            if (!v.isAutoRotating()) spin.textContent = 'start spin';
             $id('sarafina-reset-cam-btn').addEventListener('click', () => v.resetView());
             v.onChange(sync); sync();
         }
         if (window.SarafinaViewer) wireViewer(); else window.addEventListener('sarafina-ready', wireViewer, { once: true });
 
-        const items = document.querySelectorAll('.shade-item');
-        const defaultDesc = document.getElementById('description');
-        const dynamicDesc = document.getElementById('dynamic-desc');
-        const revealImage = document.getElementById('reveal-image');
-        const activeTag = document.getElementById('active-tag');
-
-        // Instant touch responsiveness
-        document.addEventListener('touchstart', function() {}, { passive: true });
-
-        items.forEach(item => {
-            item.addEventListener('click', () => {
-                // Remove active from all
-                items.forEach(i => i.classList.remove('active'));
-                
-                // Add active to clicked
-                item.classList.add('active');
-                
-                // Get swatch attributes
-                const swatch = item.querySelector('.color-swatch');
-                const text = swatch.getAttribute('data-desc');
-                const bgImg = swatch.style.backgroundImage;
-                const bgColor = swatch.style.backgroundColor;
-                const shadeName = item.querySelector('.shade-name').textContent;
-                
-                // Show this colourway on the 3D frame
-                if (window.SarafinaViewer) window.SarafinaViewer.setFinish(swatch.dataset.finish);
-                
-                if (activeTag) {
+        // Colorway swatches
+        (function () {
+            const items = document.querySelectorAll('.shade-item');
+            const dynamicDesc = document.getElementById('dynamic-desc');
+            const activeTag = document.getElementById('active-tag');
+            const nameOut = document.getElementById('colorway-name');
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    items.forEach(i => { i.classList.remove('active'); i.setAttribute('aria-pressed', 'false'); });
+                    item.classList.add('active');
+                    item.setAttribute('aria-pressed', 'true');
+                    const swatch = item.querySelector('.color-swatch');
+                    const shadeName = item.querySelector('.shade-name').textContent;
+                    if (window.SarafinaViewer) window.SarafinaViewer.setFinish(swatch.dataset.finish);
+                    nameOut.textContent = shadeName;
                     activeTag.textContent = shadeName;
                     activeTag.classList.add('visible');
-                }
-                
-                // Fade out, change text, fade in description
-                dynamicDesc.classList.remove('visible');
-                
-                setTimeout(() => {
-                    dynamicDesc.innerHTML = text;
-                    dynamicDesc.classList.add('visible');
-                    
-                    if (defaultDesc && defaultDesc.style.display !== 'none') {
-                        defaultDesc.style.opacity = '0';
-                        setTimeout(() => {
-                            defaultDesc.style.display = 'none';
-                        }, 400);
-                    }
-                }, 200);
+                    dynamicDesc.classList.remove('visible');
+                    setTimeout(() => {
+                        dynamicDesc.textContent = swatch.getAttribute('data-desc');
+                        dynamicDesc.classList.add('visible');
+                    }, 200);
+                });
             });
-        });
-
-        // Smart Sticky Header with dynamic mobile offset
-        let lastScrollTop = 0;
-        const header = document.querySelector('.main-header');
-        const threshold = 6;
-
-        function setHeaderOffset(offset) {
-            document.documentElement.style.setProperty('--header-offset', offset + 'px');
-        }
-
-        if (header) {
-            setHeaderOffset(header.offsetHeight);
-            window.addEventListener('resize', () => {
-                if (header.style.transform !== 'translateY(-100%)') {
-                    setHeaderOffset(header.offsetHeight);
-                }
-            });
-
-            window.addEventListener('scroll', () => {
-                let scrollTop = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
-                
-                if (Math.abs(scrollTop - lastScrollTop) <= threshold) return;
-
-                if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
-                    // Scrolling DOWN
-                    header.style.transform = 'translateY(-100%)';
-                    setHeaderOffset(0);
-                } else {
-                    // Scrolling UP
-                    header.style.transform = 'translateY(0)';
-                    setHeaderOffset(header.offsetHeight);
-                }
-                lastScrollTop = scrollTop;
-            }, { passive: true });
-        }
+        })();
     </script>
+    <script src="site-v2.js?v=1" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/environments/RoomEnvironment.js"></script>

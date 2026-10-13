@@ -183,7 +183,7 @@ h1, h2, h3 { line-height: 1.2; }
     padding-bottom: clamp(5rem, 10vw, 8rem);
 }
 .letter-photo { aspect-ratio: 4 / 5; overflow: hidden; background: var(--pink); }
-.letter-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.letter-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
 .letter-body h2 { font-size: clamp(1.7rem, 2.4vw, 2.2rem); margin-bottom: 1.6rem; text-transform: lowercase; }
 .letter-body p { font-size: 1.02rem; color: var(--ink-soft); max-width: 46ch; }
 .letter-body p + p { margin-top: 1.1rem; }
@@ -321,7 +321,9 @@ h1, h2, h3 { line-height: 1.2; }
 .site-footer ul { list-style: none; display: grid; gap: 0.55rem; }
 .site-footer a { text-decoration: none; font-size: 0.92rem; opacity: 0.85; }
 .site-footer a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
-.footer-base { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid rgba(250, 237, 241, 0.16); font-size: 0.78rem; opacity: 0.75; }
+.footer-base { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid rgba(250, 237, 241, 0.16); font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.footer-base p { opacity: 0.75; }
+.footer-base img { width: 46px; height: auto; }
 
 /* ---------- scroll reveal ---------- */
 @media (prefers-reduced-motion: no-preference) {
@@ -472,3 +474,137 @@ h1, h2, h3 { line-height: 1.2; }
     .teaser .wrap { grid-template-columns: 1fr; }
     .teaser-photo { order: -1; }
 }
+
+/* =====================================================================
+   PRODUCT PAGE (Sarafina Shades)
+   ===================================================================== */
+.pdp { display: grid; grid-template-columns: 7fr 5fr; border-bottom: 1px solid var(--line); }
+.pdp-media {
+    position: sticky;
+    top: 68px;
+    height: calc(100dvh - 68px);
+    min-height: 520px;
+    background: var(--pink);
+}
+.pdp-stage { position: relative; width: 100%; height: 100%; }
+#stage { width: 100%; height: 100%; outline: none; }
+#stage canvas { display: block; width: 100%; height: 100%; outline: none; cursor: grab; }
+
+.stage-hint {
+    position: absolute; left: 20px; top: 18px; z-index: 5;
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500;
+    color: var(--ink-soft); pointer-events: none;
+}
+.sarafina-active-tag {
+    position: absolute; right: 20px; top: 14px; z-index: 5;
+    font-family: var(--serif); font-size: 1.05rem; text-transform: lowercase;
+    opacity: 0; transform: translateY(6px);
+    transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+    pointer-events: none;
+}
+.sarafina-active-tag.visible { opacity: 1; transform: none; }
+
+.sarafina-3d-controls {
+    position: absolute; left: 20px; right: 20px; bottom: 20px; z-index: 10;
+    display: flex; flex-wrap: nowrap; gap: 6px; align-items: center;
+    overflow-x: auto; scrollbar-width: none;
+}
+.sarafina-3d-controls::-webkit-scrollbar { display: none; }
+.sarafina-3d-controls > * { flex: none; white-space: nowrap; }
+.cew-3d-btn {
+    appearance: none;
+    background: rgba(255, 250, 240, 0.92);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 8px 12px;
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.cew-3d-btn:hover { border-color: var(--brown); }
+.cew-3d-btn:disabled { opacity: 0.45; cursor: default; }
+.cew-3d-btn[aria-pressed="false"]:not([data-ctype]) { color: var(--ink-soft); }
+.cew-3d-play-btn { background: var(--brown); color: var(--pink); border-color: var(--brown); }
+.cew-3d-play-btn:hover { background: var(--slate); border-color: var(--slate); }
+.sarafina-tip-toggle { display: inline-flex; border: 1px solid var(--line); background: rgba(255, 250, 240, 0.92); }
+.sarafina-tip-toggle .cew-3d-btn { border: 0; background: transparent; }
+.sarafina-tip-toggle .cew-3d-btn[aria-pressed="true"] { background: var(--sage); color: var(--brown); }
+
+.pdp-info { padding: clamp(2.5rem, 5vw, 4.5rem) var(--gutter) 4rem clamp(2rem, 4vw, 4rem); }
+.pdp-info .kicker { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
+.pdp-info h1 { font-size: clamp(2.4rem, 3.6vw, 3.4rem); text-transform: lowercase; margin: 0.5rem 0 1.2rem; }
+.pdp-info .tagline { font-family: var(--serif); font-style: italic; font-size: 1.1rem; margin-bottom: 0.8rem; }
+.sarafina-copy { color: var(--ink-soft); font-size: 1.02rem; max-width: 44ch; transition: opacity 0.4s var(--ease); }
+
+.colorway-label { margin-top: 2.4rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+.colorway-label span { font-family: var(--serif); font-size: 1rem; letter-spacing: 0; text-transform: lowercase; font-weight: 400; margin-left: 0.4rem; }
+.swatches-grid { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 1rem; }
+.shade-item {
+    appearance: none; background: none; border: 0; padding: 0; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    font-family: var(--sans); color: var(--ink);
+    -webkit-tap-highlight-color: transparent;
+}
+.color-swatch {
+    width: 46px; height: 46px; border-radius: 50%;
+    background-size: cover; background-position: center;
+    box-shadow: inset 0 0 0 1px rgba(40, 25, 21, 0.18);
+    outline: 1px solid transparent; outline-offset: 3px;
+    transition: outline-color 0.25s var(--ease), transform 0.2s var(--ease);
+}
+.shade-item:hover .color-swatch { transform: scale(1.06); }
+.shade-item.active .color-swatch { outline-color: var(--brown); }
+.shade-name { font-size: 0.72rem; color: var(--ink-soft); text-transform: lowercase; }
+.shade-item.active .shade-name { color: var(--ink); font-weight: 500; }
+.shade-description {
+    min-height: 3.2em; margin-top: 1.2rem; max-width: 44ch;
+    font-family: var(--serif); font-style: italic; color: var(--ink-soft);
+    opacity: 0; transition: opacity 0.4s var(--ease);
+}
+.shade-description.visible { opacity: 1; }
+
+.pdp-cta { margin-top: 1.6rem; display: grid; gap: 0.8rem; max-width: 420px; }
+.pdp-cta .btn { width: 100%; }
+.pdp-cta small { font-size: 0.82rem; color: var(--ink-soft); }
+
+.accordion { margin-top: 2.6rem; border-top: 1px solid var(--line); max-width: 520px; }
+.accordion details { border-bottom: 1px solid var(--line); }
+.accordion summary {
+    list-style: none; cursor: pointer; padding: 1.1rem 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.74rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.accordion summary::-webkit-details-marker { display: none; }
+.accordion summary::after { content: "+"; font-size: 1.1rem; font-weight: 300; transition: transform 0.3s var(--ease); }
+.accordion details[open] summary::after { transform: rotate(45deg); }
+.accordion .body { padding-bottom: 1.3rem; color: var(--ink-soft); font-size: 0.98rem; }
+.accordion .body ul { padding-left: 1.1rem; display: grid; gap: 0.3rem; }
+
+/* engineering two-up */
+.build { padding-block: clamp(5rem, 10vw, 8rem); }
+.build h2 { font-size: clamp(1.9rem, 3vw, 2.8rem); text-transform: lowercase; max-width: 22ch; }
+.build > p { color: var(--ink-soft); max-width: 52ch; margin: 1rem 0 2.6rem; }
+.build-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.build-grid .frame { aspect-ratio: 4 / 3; background: #fff; border: 1px solid var(--line); }
+.build-grid img { width: 100%; height: 100%; object-fit: contain; padding: 6%; }
+.build-grid figcaption { padding-top: 0.7rem; font-size: 0.85rem; color: var(--ink-soft); }
+
+@media (max-width: 900px) {
+    .pdp { grid-template-columns: 1fr; }
+    .pdp-media { position: relative; top: auto; height: auto; min-height: 0; aspect-ratio: 1 / 1.05; }
+    .stage-hint { left: 12px; top: 12px; font-size: 0.64rem; }
+    .sarafina-active-tag { right: 12px; top: 8px; }
+    .sarafina-3d-controls { left: 0; right: 0; bottom: 10px; padding: 0 12px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+    .sarafina-3d-controls::-webkit-scrollbar { display: none; }
+    .cew-3d-btn, .sarafina-tip-toggle { flex: none; white-space: nowrap; }
+    .pdp-info { padding: 2rem var(--gutter) 3rem; }
+    .build-grid { grid-template-columns: 1fr; }
+}
+
+/* lettermark accents (from the amiré brand kit) */
+.signup-mark { width: 74px; height: auto; margin: 0 auto 1.4rem; }
+.signoff-mark { width: 54px; height: auto; margin-top: 1.4rem; }
