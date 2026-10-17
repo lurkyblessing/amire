@@ -12,15 +12,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="sarafina-render-gold.webp">
-    <link rel="stylesheet" href="site-v2.css?v=3">
+    <link rel="stylesheet" href="site-v2.css?v=5">
 </head>
 <body>
     <div class="promo">
-        sarafina shades are utility patent pending. <a href="#signup">join the list</a> for first access.
+        <span class="promo-full">sarafina shades are </span>utility patent pending. <a href="#signup">join the list</a><span class="promo-full"> for first access</span>.
     </div>
 
     <header class="site-header">
         <div class="wrap">
+            <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mobile-menu"><span class="menu-lines" aria-hidden="true"></span><span class="sr-only">Menu</span></button>
             <nav class="site-nav" aria-label="Main">
                 <a href="/sarafina-shades">Sarafina Shades</a>
                 <a href="/founder">Our Founder</a>
@@ -28,7 +29,18 @@
             <a href="/" class="brand" aria-label="amiré home" aria-current="page">
                 <img src="amire-wordmark-brown.png" alt="amiré" width="905" height="326">
             </a>
-            <a href="#signup" class="header-cta">Join the list</a>
+            <a href="#signup" class="header-cta">Join<span class="cta-long"> the list</span></a>
+        </div>
+        <div class="mobile-menu" id="mobile-menu" hidden>
+            <nav aria-label="Mobile">
+                <a href="/" aria-current="page">Home</a>
+                <a href="/sarafina-shades">Sarafina Shades</a>
+                <a href="/founder">Our Founder</a>
+            </nav>
+            <div class="mobile-menu-foot">
+                <a href="https://instagram.com/amirecosmetics" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://tiktok.com/@amirebeauty" target="_blank" rel="noopener noreferrer">TikTok</a>
+            </div>
         </div>
     </header>
 
@@ -197,6 +209,6 @@
         </div>
     </footer>
 
-    <script src="site-v2.js?v=1" defer></script>
+    <script src="site-v2.js?v=2" defer></script>
 </body>
 </html>

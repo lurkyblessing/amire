@@ -1,4 +1,20 @@
-// amiré v2 shared behaviour: accessible tabs + scroll reveal.
+// amiré v2 shared behaviour: mobile menu, accessible tabs, scroll reveal.
+(function () {
+    // Mobile menu
+    const btn = document.querySelector('.menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (btn && menu) {
+        const setOpen = open => {
+            btn.setAttribute('aria-expanded', open);
+            menu.hidden = !open;
+            document.documentElement.classList.toggle('menu-open', open);
+        };
+        btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+        menu.addEventListener('click', e => { if (e.target.closest('a')) setOpen(false); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { setOpen(false); btn.focus(); } });
+        matchMedia('(min-width: 901px)').addEventListener('change', e => { if (e.matches) setOpen(false); });
+    }
+})();
 (function () {
     // Tabs (WAI-ARIA tabs pattern)
     const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
